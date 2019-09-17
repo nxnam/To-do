@@ -44,7 +44,6 @@ class LogInViewController: UIViewController {
         
         txtPassword.attributedPlaceholder = NSAttributedString(string: "Password",
                                                                attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
-        
     }
     
     func setupBackground() {
@@ -78,7 +77,6 @@ class LogInViewController: UIViewController {
             if error != nil {
                 SVProgressHUD.dismiss()
                 self.present(Alert.shareAlert.showAlert(title: "Lỗi Đăng Nhập", message: "Kiểm tra lại email và mật khẩu", title_button: "Đồng ý"), animated: true)
-                //print("Error", error ?? "")
                 return
             }
             

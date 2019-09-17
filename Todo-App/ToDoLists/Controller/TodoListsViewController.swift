@@ -79,11 +79,7 @@ class TodoListsViewController: UIViewController {
     }
     
     @IBAction func btn_Back(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "ListsStoryboard", bundle: nil)
-        
-        let Lists = storyboard.instantiateViewController(withIdentifier: "LISTS") as! ListsViewController
-        
-        self.present(Lists, animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
 }
