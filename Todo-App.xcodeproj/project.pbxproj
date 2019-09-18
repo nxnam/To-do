@@ -22,8 +22,10 @@
 		FB0C43DB232CD72B00C07FAD /* LitsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0C43DA232CD72B00C07FAD /* LitsTableViewCell.swift */; };
 		FB0C43E5232D1E8000C07FAD /* TodoListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0C43E4232D1E8000C07FAD /* TodoListsViewController.swift */; };
 		FB0C43E7232D48E200C07FAD /* TodoListsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB0C43E6232D48E200C07FAD /* TodoListsStoryboard.storyboard */; };
+		FB24BE422331DEEE00CDFBC6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB24BE412331DEEE00CDFBC6 /* CoreDataManager.swift */; };
 		FB48762D232EA0E5008E5DC9 /* TodoListsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB48762C232EA0E5008E5DC9 /* TodoListsTableViewCell.swift */; };
 		FBC53B91232FF3AD009E8647 /* TodoDelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC53B90232FF3AD009E8647 /* TodoDelTableViewCell.swift */; };
+		FBC53BB523314407009E8647 /* ListsData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FBC53BB323314407009E8647 /* ListsData.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,8 +48,10 @@
 		FB0C43DA232CD72B00C07FAD /* LitsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LitsTableViewCell.swift; sourceTree = "<group>"; };
 		FB0C43E4232D1E8000C07FAD /* TodoListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListsViewController.swift; sourceTree = "<group>"; };
 		FB0C43E6232D48E200C07FAD /* TodoListsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TodoListsStoryboard.storyboard; sourceTree = "<group>"; };
+		FB24BE412331DEEE00CDFBC6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		FB48762C232EA0E5008E5DC9 /* TodoListsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListsTableViewCell.swift; sourceTree = "<group>"; };
 		FBC53B90232FF3AD009E8647 /* TodoDelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDelTableViewCell.swift; sourceTree = "<group>"; };
+		FBC53BB423314407009E8647 /* ListsData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ListsData.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,16 +104,15 @@
 		FB0C43B0232B4CDE00C07FAD /* Todo-App */ = {
 			isa = PBXGroup;
 			children = (
+				FBC53BB62331DAD1009E8647 /* Common */,
+				FB0C43B1232B4CDE00C07FAD /* AppDelegate.swift */,
 				FB0C43DC232D1DC600C07FAD /* ToDoLists */,
 				FB0C43CE232C844400C07FAD /* Lists */,
 				FB0C43C3232B4E1900C07FAD /* LogIn */,
-				FB0C43B1232B4CDE00C07FAD /* AppDelegate.swift */,
-				FB0C43B3232B4CDE00C07FAD /* ViewController.swift */,
-				FB0C43B5232B4CDE00C07FAD /* Main.storyboard */,
-				FB0C43CB232B539600C07FAD /* Extension+UIView */,
 				FB0C43B8232B4CE000C07FAD /* Assets.xcassets */,
 				FB0C43BD232B4CE000C07FAD /* Info.plist */,
 				FB0C43D6232C8D1E00C07FAD /* GoogleService-Info.plist */,
+				FBC53BB323314407009E8647 /* ListsData.xcdatamodeld */,
 			);
 			path = "Todo-App";
 			sourceTree = "<group>";
@@ -223,6 +226,41 @@
 				FB0C43E4232D1E8000C07FAD /* TodoListsViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		FB24BE3E2331DEA200CDFBC6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FB24BE412331DEEE00CDFBC6 /* CoreDataManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FB24BE3F2331DEAD00CDFBC6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FB0C43B5232B4CDE00C07FAD /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FB24BE402331DEB400CDFBC6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FB0C43B3232B4CDE00C07FAD /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FBC53BB62331DAD1009E8647 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				FB24BE402331DEB400CDFBC6 /* Controller */,
+				FB24BE3F2331DEAD00CDFBC6 /* View */,
+				FB24BE3E2331DEA200CDFBC6 /* Model */,
+				FB0C43CB232B539600C07FAD /* Extension+UIView */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,8 +387,10 @@
 				FB0C43B4232B4CDE00C07FAD /* ViewController.swift in Sources */,
 				FB48762D232EA0E5008E5DC9 /* TodoListsTableViewCell.swift in Sources */,
 				FB0C43B2232B4CDE00C07FAD /* AppDelegate.swift in Sources */,
+				FB24BE422331DEEE00CDFBC6 /* CoreDataManager.swift in Sources */,
 				FB0C43E5232D1E8000C07FAD /* TodoListsViewController.swift in Sources */,
 				FB0C43CA232B4E9400C07FAD /* LogInViewController.swift in Sources */,
+				FBC53BB523314407009E8647 /* ListsData.xcdatamodeld in Sources */,
 				FB0C43CD232B53DD00C07FAD /* Extension.swift in Sources */,
 				FB0C43D5232C84A300C07FAD /* ListsViewController.swift in Sources */,
 			);
@@ -546,6 +586,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FBC53BB323314407009E8647 /* ListsData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FBC53BB423314407009E8647 /* ListsData.xcdatamodel */,
+			);
+			currentVersion = FBC53BB423314407009E8647 /* ListsData.xcdatamodel */;
+			path = ListsData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FB0C43A6232B4CDE00C07FAD /* Project object */;
 }

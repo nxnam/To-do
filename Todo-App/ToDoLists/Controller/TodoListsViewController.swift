@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class TodoListsViewController: UIViewController {
     
@@ -18,8 +19,8 @@ class TodoListsViewController: UIViewController {
     
     @IBOutlet weak var tableListsDel: UITableView!
     
-    var nameLists = ["Do loundry","Clean kithen","Cook dinner"]
-    var listsDel = ["Eat a cookie"]
+    var nameLists = [String]()
+    var listsDel = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +32,16 @@ class TodoListsViewController: UIViewController {
         tableListsDel.dataSource = self
         tableListsDel.delegate = self
         
+        //fetchData()
+        CoreDataManager.sharedManager.fetchData(array: &nameLists, entityName: "Lists", forKey: "lblTodo")
+        CoreDataManager.sharedManager.fetchData(array: &listsDel, entityName: "ListsDel", forKey: "lblDel")
         setupListsView()
         setupBackground()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -70,9 +73,12 @@ class TodoListsViewController: UIViewController {
     @IBAction func btn_AddLists(_ sender: Any) {
         if let txtActivity = txtActivity.text {
             if txtActivity.count > 0 {
-                self.nameLists.insert(txtActivity, at: 0)
+                CoreDataManager.sharedManager.insertData(entityName: "Lists", forKey: "lblTodo", value: txtActivity)
             }
         }
+        nameLists.removeAll()
+        CoreDataManager.sharedManager.fetchData(array: &nameLists, entityName: "Lists", forKey: "lblTodo")
+        
         DispatchQueue.main.async {
             self.tableListsView.reloadData()
         }
@@ -111,7 +117,6 @@ extension TodoListsViewController: UITableViewDataSource {
             
         } else if tableView == self.tableListsDel,
             let cell = tableView.dequeueReusableCell(withIdentifier: "TODODEL") as? TodoDelTableViewCell {
-            
             let stringDel = self.listsDel[indexPath.row]
             
             let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "\(stringDel)")
@@ -132,22 +137,26 @@ extension TodoListsViewController: UITableViewDataSource {
         if let indexPath = tableListsView.indexPathForRow(at: hitPoint) {
             
             self.listsDel.insert(self.nameLists[indexPath.row], at: 0)
+            CoreDataManager.sharedManager.insertData(entityName: "ListsDel", forKey: "lblDel", value: self.nameLists[indexPath.row])
+            
             DispatchQueue.main.async {
                 self.tableListsDel.reloadData()
             }
+            
             self.nameLists.remove(at: indexPath.row)
+            CoreDataManager.sharedManager.deleteData(entityName: "Lists", index: indexPath.row)
             tableListsView.beginUpdates()
             tableListsView.deleteRows(at: [indexPath], with: .automatic)
             tableListsView.endUpdates()
-            
         }
     }
     
     @objc func delCell2(_ sender: UIButton) {
         let hitPoint = sender.convert(CGPoint.zero, to: tableListsDel)
-        if let indexPath = tableListsDel.indexPathForRow(at: hitPoint) {
         
+        if let indexPath = tableListsDel.indexPathForRow(at: hitPoint) {
             self.listsDel.remove(at: indexPath.row)
+            CoreDataManager.sharedManager.deleteData(entityName: "ListsDel", index: indexPath.row)
             tableListsDel.beginUpdates()
             tableListsDel.deleteRows(at: [indexPath], with: .automatic)
             tableListsDel.endUpdates()
