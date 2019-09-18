@@ -32,9 +32,6 @@ class TodoListsViewController: UIViewController {
         tableListsDel.dataSource = self
         tableListsDel.delegate = self
         
-        //fetchData()
-        CoreDataManager.sharedManager.fetchData(array: &nameLists, entityName: "Lists", forKey: "lblTodo")
-        CoreDataManager.sharedManager.fetchData(array: &listsDel, entityName: "ListsDel", forKey: "lblDel")
         setupListsView()
         setupBackground()
     }
@@ -42,6 +39,9 @@ class TodoListsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        //fetchData()
+        CoreDataManager.sharedManager.fetchData(array: &nameLists, entityName: "Lists", forKey: "lblTodo")
+        CoreDataManager.sharedManager.fetchData(array: &listsDel, entityName: "ListsDel", forKey: "lblDel")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -76,6 +76,7 @@ class TodoListsViewController: UIViewController {
                 CoreDataManager.sharedManager.insertData(entityName: "Lists", forKey: "lblTodo", value: txtActivity)
             }
         }
+        txtActivity.text = ""
         nameLists.removeAll()
         CoreDataManager.sharedManager.fetchData(array: &nameLists, entityName: "Lists", forKey: "lblTodo")
         

@@ -26,7 +26,7 @@ class ListsViewController: UIViewController {
         super.viewDidLoad()
 
         nameLists.append("All to-do's")
-        nameLists.append("Home to-do's")
+        nameLists.append("House to-do's")
         iconImages.append(UIImage(named: "all")!)
         iconImages.append(UIImage(named: "home")!)
         

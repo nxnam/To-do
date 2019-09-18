@@ -6,8 +6,14 @@
     <entity name="ListsDel" representedClassName="ListsDel" syncable="YES" codeGenerationType="class">
         <attribute name="lblDel" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Users" representedClassName="Users" syncable="YES" codeGenerationType="class">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Lists" positionX="-54" positionY="-9" width="128" height="60"/>
         <element name="ListsDel" positionX="-36" positionY="18" width="128" height="60"/>
+        <element name="Users" positionX="-45" positionY="9" width="128" height="90"/>
     </elements>
 </model>
