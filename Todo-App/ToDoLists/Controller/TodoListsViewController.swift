@@ -19,6 +19,7 @@ class TodoListsViewController: UIViewController {
     
     @IBOutlet weak var tableListsDel: UITableView!
     
+    var txtLists = ""
     var nameLists = [String]()
     var listsDel = [String]()
     
@@ -38,7 +39,7 @@ class TodoListsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         //fetchData()
         CoreDataManager.sharedManager.fetchData(array: &nameLists, entityName: "Lists", forKey: "lblTodo")
         CoreDataManager.sharedManager.fetchData(array: &listsDel, entityName: "ListsDel", forKey: "lblDel")
@@ -92,7 +93,29 @@ class TodoListsViewController: UIViewController {
 }
 
 extension TodoListsViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Sửa Nội Dung", message: "Nhập nội dung cần sửa", preferredStyle: UIAlertController.Style.alert)
+            let btn_Action = UIAlertAction(title: "Sửa", style: UIAlertAction.Style.default) { (btn_Action) in
+                self.txtLists = alert.textFields?[0].text ?? ""
+                if self.txtLists.count > 0 {
+                    self.nameLists[indexPath.row] =  self.txtLists
+                    CoreDataManager.sharedManager.updateData(array: &self.nameLists, value: self.txtLists, index: (self.nameLists.count - indexPath.row - 1), entityName: "Lists", forKey: "lblTodo")
+                    self.nameLists.removeAll()
+                    CoreDataManager.sharedManager.fetchData(array: &self.nameLists, entityName: "Lists", forKey: "lblTodo")
+                }
+                DispatchQueue.main.async {
+                    self.tableListsView.reloadData()
+                }
+            }
+            alert.addTextField { (txtList) in
+            }
+            alert.addAction(btn_Action)
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+    }
 }
 
 extension TodoListsViewController: UITableViewDataSource {

@@ -122,7 +122,7 @@
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter activity…" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rVo-Zo-Mhs">
                                         <rect key="frame" x="20" y="23.5" width="298" height="21"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -216,6 +216,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HTX-tw-mNS"/>
                     </view>
+                    <navigationItem key="navigationItem" id="PR3-Wr-uD0"/>
                     <connections>
                         <outlet property="listView" destination="Qah-mP-2UQ" id="zle-JQ-8Td"/>
                         <outlet property="tableListsDel" destination="w6z-85-dIT" id="iEa-pv-fek"/>
@@ -225,7 +226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bp6-Up-z2u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4201.449275362319" y="80.357142857142847"/>
+            <point key="canvasLocation" x="5111.594202898551" y="80.357142857142847"/>
         </scene>
     </scenes>
     <resources>

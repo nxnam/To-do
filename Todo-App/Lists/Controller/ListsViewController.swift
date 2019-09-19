@@ -77,7 +77,7 @@ extension ListsViewController: UITableViewDelegate {
         
         let Todo = storyboard.instantiateViewController(withIdentifier: "TODOLISTS") as! TodoListsViewController
         
-        self.present(Todo, animated: true)
+        self.present(Todo, animated: true, completion: nil)
     }
 }
 

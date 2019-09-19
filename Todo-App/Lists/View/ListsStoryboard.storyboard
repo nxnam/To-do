@@ -118,6 +118,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Lph-68-PtT"/>
                     </view>
+                    <navigationItem key="navigationItem" id="gd2-nK-e3k"/>
                     <connections>
                         <outlet property="ListTableView" destination="Am5-B6-dTO" id="91a-lo-ddr"/>
                         <outlet property="btnAdd" destination="AsU-Oa-uXd" id="Cme-ne-Vwt"/>
@@ -128,7 +129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OrE-9M-JRX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1031.8840579710145" y="123.88392857142857"/>
+            <point key="canvasLocation" x="1942.0289855072465" y="123.88392857142857"/>
         </scene>
     </scenes>
     <resources>

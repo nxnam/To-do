@@ -51,6 +51,33 @@ class CoreDataManager {
         }
     }
     
+    func updateData(array: inout [String], value: String, index: Int, entityName: String, forKey: String) {
+        let AppDel: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let context:NSManagedObjectContext = AppDel.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "\(entityName)")
+        request.returnsObjectsAsFaults = true
+        
+        do {
+            var results = try context.fetch(request)
+            
+            let objManager = results[index] as! NSManagedObject
+            
+            objManager.setValue(value, forKey: "\(forKey)")
+            
+            print(objManager)
+            do {
+                try context.save()
+            } catch {
+                
+            }
+            
+        } catch {
+            print("Error")
+        }
+    }
+    
     func deleteData(entityName: String, index: Int) {
         let AppDel: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         
