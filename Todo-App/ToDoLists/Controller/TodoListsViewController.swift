@@ -94,27 +94,32 @@ class TodoListsViewController: UIViewController {
 
 extension TodoListsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Sửa Nội Dung", message: "Nhập nội dung cần sửa", preferredStyle: UIAlertController.Style.alert)
-            let btn_Action = UIAlertAction(title: "Sửa", style: UIAlertAction.Style.default) { (btn_Action) in
-                self.txtLists = alert.textFields?[0].text ?? ""
-                if self.txtLists.count > 0 {
-                    self.nameLists[indexPath.row] =  self.txtLists
-                    CoreDataManager.sharedManager.updateData(array: &self.nameLists, value: self.txtLists, index: (self.nameLists.count - indexPath.row - 1), entityName: "Lists", forKey: "lblTodo")
-                    self.nameLists.removeAll()
-                    CoreDataManager.sharedManager.fetchData(array: &self.nameLists, entityName: "Lists", forKey: "lblTodo")
+        if tableView == self.tableListsView {
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Sửa Nội Dung", message: "Nhập nội dung cần sửa", preferredStyle: UIAlertController.Style.alert)
+                let btn_Action = UIAlertAction(title: "Sửa", style: UIAlertAction.Style.default) { (btn_Action) in
+                    self.txtLists = alert.textFields?[0].text ?? ""
+                    if self.txtLists.count > 0 {
+                        self.nameLists[indexPath.row] =  self.txtLists
+                        CoreDataManager.sharedManager.updateData(array: &self.nameLists, value: self.txtLists, index: (self.nameLists.count - indexPath.row - 1), entityName: "Lists", forKey: "lblTodo")
+                        self.nameLists.removeAll()
+                        CoreDataManager.sharedManager.fetchData(array: &self.nameLists, entityName: "Lists", forKey: "lblTodo")
+                    }
+                    DispatchQueue.main.async {
+                        self.tableListsView.reloadData()
+                    }
                 }
-                DispatchQueue.main.async {
-                    self.tableListsView.reloadData()
+                let btn_Cancel = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel)
+                alert.addTextField { (txtList) in
                 }
+                alert.addAction(btn_Cancel)
+                alert.addAction(btn_Action)
+                
+                self.present(alert, animated: true, completion: nil)
             }
-            alert.addTextField { (txtList) in
-            }
-            alert.addAction(btn_Action)
-            
-            self.present(alert, animated: true, completion: nil)
+        } else {
+            return
         }
-        
     }
 }
 
@@ -157,34 +162,52 @@ extension TodoListsViewController: UITableViewDataSource {
     }
     
     @objc func delCell(_ sender: UIButton) {
-        let hitPoint = sender.convert(CGPoint.zero, to: tableListsView)
-        if let indexPath = tableListsView.indexPathForRow(at: hitPoint) {
-            
-            self.listsDel.insert(self.nameLists[indexPath.row], at: 0)
-            CoreDataManager.sharedManager.insertData(entityName: "ListsDel", forKey: "lblDel", value: self.nameLists[indexPath.row])
-            
-            DispatchQueue.main.async {
-                self.tableListsDel.reloadData()
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Thông báo", message: "Xoá nội dung sẽ không thể khôi phục", preferredStyle: UIAlertController.Style.alert)
+            let btn_Action = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) { (btn_Action) in
+                let hitPoint = sender.convert(CGPoint.zero, to: self.tableListsView)
+                if let indexPath = self.tableListsView.indexPathForRow(at: hitPoint) {
+                    self.listsDel.insert(self.nameLists[indexPath.row], at: 0)
+                    CoreDataManager.sharedManager.insertData(entityName: "ListsDel", forKey: "lblDel", value: self.nameLists[indexPath.row])
+                    
+                    DispatchQueue.main.async {
+                        self.tableListsDel.reloadData()
+                    }
+                    
+                    self.nameLists.remove(at: indexPath.row)
+                    CoreDataManager.sharedManager.deleteData(entityName: "Lists", index: indexPath.row)
+                    self.tableListsView.beginUpdates()
+                    self.tableListsView.deleteRows(at: [indexPath], with: .automatic)
+                    self.tableListsView.endUpdates()
+                }
             }
-            
-            self.nameLists.remove(at: indexPath.row)
-            CoreDataManager.sharedManager.deleteData(entityName: "Lists", index: indexPath.row)
-            tableListsView.beginUpdates()
-            tableListsView.deleteRows(at: [indexPath], with: .automatic)
-            tableListsView.endUpdates()
+            let btn_Cancel = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel)
+            alert.addAction(btn_Cancel)
+            alert.addAction(btn_Action)
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
     @objc func delCell2(_ sender: UIButton) {
-        let hitPoint = sender.convert(CGPoint.zero, to: tableListsDel)
         
-        if let indexPath = tableListsDel.indexPathForRow(at: hitPoint) {
-            self.listsDel.remove(at: indexPath.row)
-            CoreDataManager.sharedManager.deleteData(entityName: "ListsDel", index: indexPath.row)
-            tableListsDel.beginUpdates()
-            tableListsDel.deleteRows(at: [indexPath], with: .automatic)
-            tableListsDel.endUpdates()
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Thông báo", message: "Xoá nội dung sẽ không thể khôi phục", preferredStyle: UIAlertController.Style.alert)
+            let btn_Action = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) { (btn_Action) in
+                let hitPoint = sender.convert(CGPoint.zero, to: self.tableListsDel)
+                
+                if let indexPath = self.tableListsDel.indexPathForRow(at: hitPoint) {
+                    self.listsDel.remove(at: indexPath.row)
+                    CoreDataManager.sharedManager.deleteData(entityName: "ListsDel", index: indexPath.row)
+                    self.tableListsDel.beginUpdates()
+                    self.tableListsDel.deleteRows(at: [indexPath], with: .automatic)
+                    self.tableListsDel.endUpdates()
+                }
+            }
+            let btn_Cancel = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel)
+            alert.addAction(btn_Cancel)
+            alert.addAction(btn_Action)
             
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }
