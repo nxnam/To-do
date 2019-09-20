@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Foundation
+import Firebase
 
 class ListsViewController: UIViewController {
     
@@ -21,10 +23,10 @@ class ListsViewController: UIViewController {
     
     var iconImages = [UIImage]()
     var nameLists = [String]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         nameLists.append("All to-do's")
         nameLists.append("House to-do's")
         iconImages.append(UIImage(named: "all")!)
@@ -42,6 +44,7 @@ class ListsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
+        getUserName()
         viewDidLayoutSubviews()
     }
     
@@ -51,7 +54,25 @@ class ListsViewController: UIViewController {
     
     override func viewDidLayoutSubviews(){
         ListTableView.frame = CGRect(x: ListTableView.frame.origin.x, y: ListTableView.frame.origin.y, width: ListTableView.frame.size.width, height: ListTableView.contentSize.height)
-        ListTableView.reloadData()
+        DispatchQueue.main.async {
+            self.ListTableView.reloadData()
+        }
+    }
+    
+    func getUserName() {
+        let ref = Database.database().reference()
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+    
+        ref.child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let name = value?["name"] as? String ?? ""
+            DispatchQueue.main.async {
+                 self.lblName.text = "Hello \(name)"
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     }
     
     func setupBackground() {

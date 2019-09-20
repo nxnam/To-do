@@ -66,7 +66,6 @@ class CoreDataManager {
             
             objManager.setValue(value, forKey: "\(forKey)")
             
-            print(objManager)
             do {
                 try context.save()
             } catch {

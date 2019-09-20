@@ -3,34 +3,34 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>137894965830-4ntas745mnrqqll3npqq7r8ip44tr50c.apps.googleusercontent.com</string>
+	<string>524718960541-d9nkihdas08emn1odvphostmr8nhsas1.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.137894965830-4ntas745mnrqqll3npqq7r8ip44tr50c</string>
+	<string>com.googleusercontent.apps.524718960541-d9nkihdas08emn1odvphostmr8nhsas1</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDtkvY45xHCawg2GXcroSrKwZB-9uUdUHY</string>
+	<string>AIzaSyCCIwEaIhiWhRQA2Xdemnyr7m-bteUfVFk</string>
 	<key>GCM_SENDER_ID</key>
-	<string>137894965830</string>
+	<string>524718960541</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>nxn.Todo-App</string>
 	<key>PROJECT_ID</key>
-	<string>fir-chatapp-64c59</string>
+	<string>todo-app-2671c</string>
 	<key>STORAGE_BUCKET</key>
-	<string>fir-chatapp-64c59.appspot.com</string>
+	<string>todo-app-2671c.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:137894965830:ios:432006c8fac1baaa</string>
+	<string>1:524718960541:ios:c6263c6bf8c84bb26d0974</string>
 	<key>DATABASE_URL</key>
-	<string>https://fir-chatapp-64c59.firebaseio.com</string>
+	<string>https://todo-app-2671c.firebaseio.com</string>
 </dict>
 </plist>

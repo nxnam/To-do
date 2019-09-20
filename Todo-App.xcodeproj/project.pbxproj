@@ -17,12 +17,15 @@
 		FB0C43CD232B53DD00C07FAD /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0C43CC232B53DD00C07FAD /* Extension.swift */; };
 		FB0C43D3232C848D00C07FAD /* ListsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB0C43D2232C848D00C07FAD /* ListsStoryboard.storyboard */; };
 		FB0C43D5232C84A300C07FAD /* ListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0C43D4232C84A300C07FAD /* ListsViewController.swift */; };
-		FB0C43D7232C8D1E00C07FAD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB0C43D6232C8D1E00C07FAD /* GoogleService-Info.plist */; };
 		FB0C43D9232C8EA400C07FAD /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0C43D8232C8EA400C07FAD /* Alert.swift */; };
 		FB0C43DB232CD72B00C07FAD /* LitsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0C43DA232CD72B00C07FAD /* LitsTableViewCell.swift */; };
 		FB0C43E5232D1E8000C07FAD /* TodoListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0C43E4232D1E8000C07FAD /* TodoListsViewController.swift */; };
 		FB0C43E7232D48E200C07FAD /* TodoListsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB0C43E6232D48E200C07FAD /* TodoListsStoryboard.storyboard */; };
+		FB0F0B672333B0FA001B1A1D /* SingLogInData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0F0B662333B0FA001B1A1D /* SingLogInData.swift */; };
 		FB24BE422331DEEE00CDFBC6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB24BE412331DEEE00CDFBC6 /* CoreDataManager.swift */; };
+		FB24BE4E23339AE800CDFBC6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB24BE4D23339AE800CDFBC6 /* GoogleService-Info.plist */; };
+		FB24BE5023339BFB00CDFBC6 /* RegisterStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB24BE4F23339BFB00CDFBC6 /* RegisterStoryboard.storyboard */; };
+		FB24BE5223339C2F00CDFBC6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB24BE5123339C2F00CDFBC6 /* RegisterViewController.swift */; };
 		FB48762D232EA0E5008E5DC9 /* TodoListsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB48762C232EA0E5008E5DC9 /* TodoListsTableViewCell.swift */; };
 		FBC53B91232FF3AD009E8647 /* TodoDelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC53B90232FF3AD009E8647 /* TodoDelTableViewCell.swift */; };
 		FBC53BB523314407009E8647 /* ListsData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FBC53BB323314407009E8647 /* ListsData.xcdatamodeld */; };
@@ -43,12 +46,16 @@
 		FB0C43CC232B53DD00C07FAD /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		FB0C43D2232C848D00C07FAD /* ListsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ListsStoryboard.storyboard; sourceTree = "<group>"; };
 		FB0C43D4232C84A300C07FAD /* ListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsViewController.swift; sourceTree = "<group>"; };
-		FB0C43D6232C8D1E00C07FAD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FB0C43D8232C8EA400C07FAD /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		FB0C43DA232CD72B00C07FAD /* LitsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LitsTableViewCell.swift; sourceTree = "<group>"; };
 		FB0C43E4232D1E8000C07FAD /* TodoListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListsViewController.swift; sourceTree = "<group>"; };
 		FB0C43E6232D48E200C07FAD /* TodoListsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TodoListsStoryboard.storyboard; sourceTree = "<group>"; };
+		FB0F0B662333B0FA001B1A1D /* SingLogInData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingLogInData.swift; sourceTree = "<group>"; };
+		FB0F0B682333B408001B1A1D /* Todo-App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Todo-App.entitlements"; sourceTree = "<group>"; };
 		FB24BE412331DEEE00CDFBC6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		FB24BE4D23339AE800CDFBC6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FB24BE4F23339BFB00CDFBC6 /* RegisterStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegisterStoryboard.storyboard; sourceTree = "<group>"; };
+		FB24BE5123339C2F00CDFBC6 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		FB48762C232EA0E5008E5DC9 /* TodoListsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListsTableViewCell.swift; sourceTree = "<group>"; };
 		FBC53B90232FF3AD009E8647 /* TodoDelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDelTableViewCell.swift; sourceTree = "<group>"; };
 		FBC53BB423314407009E8647 /* ListsData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ListsData.xcdatamodel; sourceTree = "<group>"; };
@@ -104,6 +111,7 @@
 		FB0C43B0232B4CDE00C07FAD /* Todo-App */ = {
 			isa = PBXGroup;
 			children = (
+				FB0F0B682333B408001B1A1D /* Todo-App.entitlements */,
 				FBC53BB62331DAD1009E8647 /* Common */,
 				FB0C43B1232B4CDE00C07FAD /* AppDelegate.swift */,
 				FB0C43DC232D1DC600C07FAD /* ToDoLists */,
@@ -111,7 +119,7 @@
 				FB0C43C3232B4E1900C07FAD /* LogIn */,
 				FB0C43B8232B4CE000C07FAD /* Assets.xcassets */,
 				FB0C43BD232B4CE000C07FAD /* Info.plist */,
-				FB0C43D6232C8D1E00C07FAD /* GoogleService-Info.plist */,
+				FB24BE4D23339AE800CDFBC6 /* GoogleService-Info.plist */,
 				FBC53BB323314407009E8647 /* ListsData.xcdatamodeld */,
 			);
 			path = "Todo-App";
@@ -122,22 +130,16 @@
 			children = (
 				FB0C43C6232B4E5200C07FAD /* Controller */,
 				FB0C43C5232B4E4700C07FAD /* View */,
-				FB0C43C4232B4E3A00C07FAD /* Model */,
+				FB0F0B652333B0DD001B1A1D /* Model */,
 			);
 			path = LogIn;
-			sourceTree = "<group>";
-		};
-		FB0C43C4232B4E3A00C07FAD /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		FB0C43C5232B4E4700C07FAD /* View */ = {
 			isa = PBXGroup;
 			children = (
 				FB0C43C7232B4E7B00C07FAD /* LogInStoryboard.storyboard */,
+				FB24BE4F23339BFB00CDFBC6 /* RegisterStoryboard.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				FB0C43C9232B4E9400C07FAD /* LogInViewController.swift */,
+				FB24BE5123339C2F00CDFBC6 /* RegisterViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -228,6 +231,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		FB0F0B652333B0DD001B1A1D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FB0F0B662333B0FA001B1A1D /* SingLogInData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		FB24BE3E2331DEA200CDFBC6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -297,6 +308,11 @@
 				TargetAttributes = {
 					FB0C43AD232B4CDE00C07FAD = {
 						CreatedOnToolsVersion = 10.3;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -326,9 +342,10 @@
 				FB0C43D3232C848D00C07FAD /* ListsStoryboard.storyboard in Resources */,
 				FB0C43E7232D48E200C07FAD /* TodoListsStoryboard.storyboard in Resources */,
 				FB0C43B9232B4CE000C07FAD /* Assets.xcassets in Resources */,
+				FB24BE5023339BFB00CDFBC6 /* RegisterStoryboard.storyboard in Resources */,
 				FB0C43B7232B4CDE00C07FAD /* Main.storyboard in Resources */,
 				FB0C43C8232B4E7B00C07FAD /* LogInStoryboard.storyboard in Resources */,
-				FB0C43D7232C8D1E00C07FAD /* GoogleService-Info.plist in Resources */,
+				FB24BE4E23339AE800CDFBC6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +408,8 @@
 				FB0C43E5232D1E8000C07FAD /* TodoListsViewController.swift in Sources */,
 				FB0C43CA232B4E9400C07FAD /* LogInViewController.swift in Sources */,
 				FBC53BB523314407009E8647 /* ListsData.xcdatamodeld in Sources */,
+				FB0F0B672333B0FA001B1A1D /* SingLogInData.swift in Sources */,
+				FB24BE5223339C2F00CDFBC6 /* RegisterViewController.swift in Sources */,
 				FB0C43CD232B53DD00C07FAD /* Extension.swift in Sources */,
 				FB0C43D5232C84A300C07FAD /* ListsViewController.swift in Sources */,
 			);
@@ -531,6 +550,7 @@
 			baseConfigurationReference = 0E8C5D8F1B388C7C24CA4709 /* Pods-Todo-App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Todo-App/Todo-App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 87Z3WQ446P;
 				INFOPLIST_FILE = "Todo-App/Info.plist";
@@ -550,6 +570,7 @@
 			baseConfigurationReference = 3BAC48F5EDA7CDA471265AD7 /* Pods-Todo-App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Todo-App/Todo-App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 87Z3WQ446P;
 				INFOPLIST_FILE = "Todo-App/Info.plist";

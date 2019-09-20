@@ -1,17 +1,18 @@
 //
-//  LogInViewController.swift
+//  RegisterViewController.swift
 //  Todo-App
 //
-//  Created by Nguyễn Xuân Nam on 9/13/19.
+//  Created by Nguyễn Xuân Nam on 9/19/19.
 //  Copyright © 2019 Nguyễn Xuân Nam. All rights reserved.
 //
 
 import UIKit
-import Firebase
 import SVProgressHUD
+import Firebase
 
-class LogInViewController: UIViewController {
-    
+class RegisterViewController: UIViewController {
+
+    @IBOutlet weak var txtName: UITextField!
     
     @IBOutlet weak var txtEmail: UITextField!
     
@@ -19,7 +20,7 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupTextField()
         setupBackground()
     }
@@ -29,16 +30,21 @@ class LogInViewController: UIViewController {
     }
     
     func setupTextField() {
-        txtEmail.becomeFirstResponder()
+        txtName.becomeFirstResponder()
         
+        txtName.backgroundColor = UIColor(white: 74/255, alpha: 1)
+        txtName.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
         txtEmail.backgroundColor = UIColor(white: 74/255, alpha: 1)
         txtEmail.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
         txtPassword.backgroundColor = UIColor(white: 74/255, alpha: 1)
         txtPassword.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
         
+        txtName.setLeftPaddingPoints(30)
         txtEmail.setLeftPaddingPoints(30)
         txtPassword.setLeftPaddingPoints(30)
         
+        txtName.attributedPlaceholder = NSAttributedString(string: "Name",
+                                                            attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         txtEmail.attributedPlaceholder = NSAttributedString(string: "Email",
                                                             attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         
@@ -53,51 +59,47 @@ class LogInViewController: UIViewController {
         self.view.insertSubview(backgroundImage, at: 0)
     }
     
-    @IBAction func btl_LogIn(_ sender: Any) {
-        handleLogin()
+    @IBAction func btn_Back(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
-    
+
     @IBAction func btn_Register(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "RegisterStoryboard", bundle: nil)
-        
-        let Register = storyboard.instantiateViewController(withIdentifier: "REGISTER") as! RegisterViewController
-        
-        self.present(Register, animated: true)
+        handleRegister()
     }
     
-    
-    
-    func handleLogin() {
-        
-        guard let email = txtEmail.text, let password = txtPassword.text else { return }
-        
-        if email.isEmpty {
-            self.present(Alert.shareAlert.showAlert(title: "Lỗi Đăng Nhập", message: "Không được để trống Email", title_button: "Đồng ý"), animated: true)
-            return
-        } else if password.isEmpty {
-            self.present(Alert.shareAlert.showAlert(title: "Lỗi Đăng Nhập", message: "Không được để trống Password", title_button: "Đồng ý"), animated: true)
-            return
-        }
-        
+    func handleRegister() {
         SVProgressHUD.show()
         
-        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+        guard let name = txtName.text , let email = txtEmail.text, let password = txtPassword.text else { return }
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             
             if error != nil {
+                DispatchQueue.main.async {
+                    sleep(1)
+                }
                 SVProgressHUD.dismiss()
-                self.present(Alert.shareAlert.showAlert(title: "Lỗi Đăng Nhập", message: "Kiểm tra lại email và mật khẩu", title_button: "Đồng ý"), animated: true)
+                //print("Error", error ?? "")
                 return
             }
+
+            let ref = Database.database().reference(fromURL: SingLogInData.urlDatabase).child("users").child(uid)
+            let value = ["name": name, "email": email, "password": password]
+
+            ref.updateChildValues(value, withCompletionBlock: { (err, ref) in
+                if err != nil {
+                    SVProgressHUD.dismiss()
+                    //print("Error", err ?? "")
+                    return
+                }
+                SVProgressHUD.dismiss()
+                //print("Success", name)
+                self.dismiss(animated: true, completion: nil)
             
-            SVProgressHUD.dismiss()
-            
-            let storyboard = UIStoryboard(name: "ListsStoryboard", bundle: nil)
-            
-            let Lists = storyboard.instantiateViewController(withIdentifier: "LISTS") as! ListsViewController
-            
-            self.present(Lists, animated: true)
+            })
         }
-        
     }
     
 }
