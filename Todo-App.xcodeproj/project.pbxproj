@@ -22,13 +22,14 @@
 		FB0C43E5232D1E8000C07FAD /* TodoListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0C43E4232D1E8000C07FAD /* TodoListsViewController.swift */; };
 		FB0C43E7232D48E200C07FAD /* TodoListsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB0C43E6232D48E200C07FAD /* TodoListsStoryboard.storyboard */; };
 		FB0F0B672333B0FA001B1A1D /* SingLogInData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0F0B662333B0FA001B1A1D /* SingLogInData.swift */; };
+		FB1379102338CEFD00E8FFFE /* TodoData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB13790E2338CEFD00E8FFFE /* TodoData.xcdatamodeld */; };
+		FB1379122338D02400E8FFFE /* KeyTodoLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1379112338D02400E8FFFE /* KeyTodoLists.swift */; };
 		FB24BE422331DEEE00CDFBC6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB24BE412331DEEE00CDFBC6 /* CoreDataManager.swift */; };
 		FB24BE4E23339AE800CDFBC6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB24BE4D23339AE800CDFBC6 /* GoogleService-Info.plist */; };
 		FB24BE5023339BFB00CDFBC6 /* RegisterStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB24BE4F23339BFB00CDFBC6 /* RegisterStoryboard.storyboard */; };
 		FB24BE5223339C2F00CDFBC6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB24BE5123339C2F00CDFBC6 /* RegisterViewController.swift */; };
 		FB48762D232EA0E5008E5DC9 /* TodoListsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB48762C232EA0E5008E5DC9 /* TodoListsTableViewCell.swift */; };
 		FBC53B91232FF3AD009E8647 /* TodoDelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC53B90232FF3AD009E8647 /* TodoDelTableViewCell.swift */; };
-		FBC53BB523314407009E8647 /* ListsData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FBC53BB323314407009E8647 /* ListsData.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,13 +53,14 @@
 		FB0C43E6232D48E200C07FAD /* TodoListsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TodoListsStoryboard.storyboard; sourceTree = "<group>"; };
 		FB0F0B662333B0FA001B1A1D /* SingLogInData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingLogInData.swift; sourceTree = "<group>"; };
 		FB0F0B682333B408001B1A1D /* Todo-App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Todo-App.entitlements"; sourceTree = "<group>"; };
+		FB13790F2338CEFD00E8FFFE /* TodoData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TodoData.xcdatamodel; sourceTree = "<group>"; };
+		FB1379112338D02400E8FFFE /* KeyTodoLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyTodoLists.swift; sourceTree = SOURCE_ROOT; };
 		FB24BE412331DEEE00CDFBC6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		FB24BE4D23339AE800CDFBC6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FB24BE4F23339BFB00CDFBC6 /* RegisterStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegisterStoryboard.storyboard; sourceTree = "<group>"; };
 		FB24BE5123339C2F00CDFBC6 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		FB48762C232EA0E5008E5DC9 /* TodoListsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListsTableViewCell.swift; sourceTree = "<group>"; };
 		FBC53B90232FF3AD009E8647 /* TodoDelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDelTableViewCell.swift; sourceTree = "<group>"; };
-		FBC53BB423314407009E8647 /* ListsData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ListsData.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +122,7 @@
 				FB0C43B8232B4CE000C07FAD /* Assets.xcassets */,
 				FB0C43BD232B4CE000C07FAD /* Info.plist */,
 				FB24BE4D23339AE800CDFBC6 /* GoogleService-Info.plist */,
-				FBC53BB323314407009E8647 /* ListsData.xcdatamodeld */,
+				FB13790E2338CEFD00E8FFFE /* TodoData.xcdatamodeld */,
 			);
 			path = "Todo-App";
 			sourceTree = "<group>";
@@ -209,6 +211,7 @@
 		FB0C43DD232D1DEE00C07FAD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FB1379112338D02400E8FFFE /* KeyTodoLists.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -402,12 +405,13 @@
 				FBC53B91232FF3AD009E8647 /* TodoDelTableViewCell.swift in Sources */,
 				FB0C43D9232C8EA400C07FAD /* Alert.swift in Sources */,
 				FB0C43B4232B4CDE00C07FAD /* ViewController.swift in Sources */,
+				FB1379122338D02400E8FFFE /* KeyTodoLists.swift in Sources */,
 				FB48762D232EA0E5008E5DC9 /* TodoListsTableViewCell.swift in Sources */,
 				FB0C43B2232B4CDE00C07FAD /* AppDelegate.swift in Sources */,
 				FB24BE422331DEEE00CDFBC6 /* CoreDataManager.swift in Sources */,
 				FB0C43E5232D1E8000C07FAD /* TodoListsViewController.swift in Sources */,
 				FB0C43CA232B4E9400C07FAD /* LogInViewController.swift in Sources */,
-				FBC53BB523314407009E8647 /* ListsData.xcdatamodeld in Sources */,
+				FB1379102338CEFD00E8FFFE /* TodoData.xcdatamodeld in Sources */,
 				FB0F0B672333B0FA001B1A1D /* SingLogInData.swift in Sources */,
 				FB24BE5223339C2F00CDFBC6 /* RegisterViewController.swift in Sources */,
 				FB0C43CD232B53DD00C07FAD /* Extension.swift in Sources */,
@@ -609,13 +613,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		FBC53BB323314407009E8647 /* ListsData.xcdatamodeld */ = {
+		FB13790E2338CEFD00E8FFFE /* TodoData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				FBC53BB423314407009E8647 /* ListsData.xcdatamodel */,
+				FB13790F2338CEFD00E8FFFE /* TodoData.xcdatamodel */,
 			);
-			currentVersion = FBC53BB423314407009E8647 /* ListsData.xcdatamodel */;
-			path = ListsData.xcdatamodeld;
+			currentVersion = FB13790F2338CEFD00E8FFFE /* TodoData.xcdatamodel */;
+			path = TodoData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

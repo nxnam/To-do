@@ -41,8 +41,8 @@ class TodoListsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         //fetchData()
-        CoreDataManager.sharedManager.fetchData(array: &nameLists, entityName: "Lists", forKey: "lblTodo")
-        CoreDataManager.sharedManager.fetchData(array: &listsDel, entityName: "ListsDel", forKey: "lblDel")
+        CoreDataManager.sharedManager.fetchData(array: &nameLists, entityName: KeyCoreData.share.nameTodoLists , forKey: KeyCoreData.share.keyTodoList)
+        CoreDataManager.sharedManager.fetchData(array: &listsDel, entityName: KeyCoreData.share.nameTodoListsDel, forKey: KeyCoreData.share.keyTodoListDel)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -74,12 +74,12 @@ class TodoListsViewController: UIViewController {
     @IBAction func btn_AddLists(_ sender: Any) {
         if let txtActivity = txtActivity.text {
             if txtActivity.count > 0 {
-                CoreDataManager.sharedManager.insertData(entityName: "Lists", forKey: "lblTodo", value: txtActivity)
+                CoreDataManager.sharedManager.insertData(entityName: KeyCoreData.share.nameTodoLists, forKey: KeyCoreData.share.keyTodoList, value: txtActivity)
             }
         }
         txtActivity.text = ""
         nameLists.removeAll()
-        CoreDataManager.sharedManager.fetchData(array: &nameLists, entityName: "Lists", forKey: "lblTodo")
+        CoreDataManager.sharedManager.fetchData(array: &nameLists, entityName: KeyCoreData.share.nameTodoLists , forKey: KeyCoreData.share.keyTodoList)
         
         DispatchQueue.main.async {
             self.tableListsView.reloadData()
@@ -101,9 +101,9 @@ extension TodoListsViewController: UITableViewDelegate {
                     self.txtLists = alert.textFields?[0].text ?? ""
                     if self.txtLists.count > 0 {
                         self.nameLists[indexPath.row] =  self.txtLists
-                        CoreDataManager.sharedManager.updateData(array: &self.nameLists, value: self.txtLists, index: (self.nameLists.count - indexPath.row - 1), entityName: "Lists", forKey: "lblTodo")
+                        CoreDataManager.sharedManager.updateData(array: &self.nameLists, value: self.txtLists, index: (self.nameLists.count - indexPath.row - 1), entityName: KeyCoreData.share.nameTodoLists, forKey: KeyCoreData.share.keyTodoList)
                         self.nameLists.removeAll()
-                        CoreDataManager.sharedManager.fetchData(array: &self.nameLists, entityName: "Lists", forKey: "lblTodo")
+                        CoreDataManager.sharedManager.fetchData(array: &self.nameLists, entityName: KeyCoreData.share.nameTodoLists , forKey: KeyCoreData.share.keyTodoList)
                     }
                     DispatchQueue.main.async {
                         self.tableListsView.reloadData()
@@ -168,14 +168,14 @@ extension TodoListsViewController: UITableViewDataSource {
                 let hitPoint = sender.convert(CGPoint.zero, to: self.tableListsView)
                 if let indexPath = self.tableListsView.indexPathForRow(at: hitPoint) {
                     self.listsDel.insert(self.nameLists[indexPath.row], at: 0)
-                    CoreDataManager.sharedManager.insertData(entityName: "ListsDel", forKey: "lblDel", value: self.nameLists[indexPath.row])
+                    CoreDataManager.sharedManager.insertData(entityName: KeyCoreData.share.nameTodoListsDel, forKey: KeyCoreData.share.keyTodoListDel, value: self.nameLists[indexPath.row])
                     
                     DispatchQueue.main.async {
                         self.tableListsDel.reloadData()
                     }
                     
                     self.nameLists.remove(at: indexPath.row)
-                    CoreDataManager.sharedManager.deleteData(entityName: "Lists", index: indexPath.row)
+                    CoreDataManager.sharedManager.deleteData(entityName: KeyCoreData.share.nameTodoLists, index: indexPath.row)
                     self.tableListsView.beginUpdates()
                     self.tableListsView.deleteRows(at: [indexPath], with: .automatic)
                     self.tableListsView.endUpdates()
@@ -197,7 +197,7 @@ extension TodoListsViewController: UITableViewDataSource {
                 
                 if let indexPath = self.tableListsDel.indexPathForRow(at: hitPoint) {
                     self.listsDel.remove(at: indexPath.row)
-                    CoreDataManager.sharedManager.deleteData(entityName: "ListsDel", index: indexPath.row)
+                    CoreDataManager.sharedManager.deleteData(entityName: KeyCoreData.share.nameTodoListsDel, index: indexPath.row)
                     self.tableListsDel.beginUpdates()
                     self.tableListsDel.deleteRows(at: [indexPath], with: .automatic)
                     self.tableListsDel.endUpdates()
