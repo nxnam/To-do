@@ -21,16 +21,14 @@ class ListsViewController: UIViewController {
     
     @IBOutlet weak var btnAdd: UIButton!
     
-    var iconImages = [UIImage]()
     var nameLists = [String]()
+    var addLists = [String]()
+    var txtLists = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         nameLists.append("All to-do's")
-        nameLists.append("House to-do's")
-        iconImages.append(UIImage(named: "all")!)
-        iconImages.append(UIImage(named: "home")!)
         
         self.ListTableView.dataSource = self
         self.ListTableView.delegate = self
@@ -44,6 +42,9 @@ class ListsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
+        //fetchData
+        CoreDataManager.sharedManager.fetchData(array: &self.addLists, entityName: KeyLists.share.nameLists, forKey: KeyLists.share.keyLists)
+        
         getUserName()
         viewDidLayoutSubviews()
     }
@@ -52,23 +53,16 @@ class ListsViewController: UIViewController {
         return .lightContent
     }
     
-    override func viewDidLayoutSubviews(){
-        ListTableView.frame = CGRect(x: ListTableView.frame.origin.x, y: ListTableView.frame.origin.y, width: ListTableView.frame.size.width, height: ListTableView.contentSize.height)
-        DispatchQueue.main.async {
-            self.ListTableView.reloadData()
-        }
-    }
-    
     func getUserName() {
         let ref = Database.database().reference()
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
-    
+        
         ref.child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             let name = value?["name"] as? String ?? ""
             DispatchQueue.main.async {
-                 self.lblName.text = "Hello \(name)"
+                self.lblName.text = "Hello \(name)"
             }
         }) { (error) in
             print(error.localizedDescription)
@@ -87,9 +81,27 @@ class ListsViewController: UIViewController {
     }
     
     @IBAction func btn_Add(_ sender: Any) {
-        print("111")
+        let alert = UIAlertController(title: "Add Lists", message: "Nhập nội dung cần thêm", preferredStyle: UIAlertController.Style.alert)
+        let btn_Action = UIAlertAction(title: "Thêm", style: UIAlertAction.Style.default) { (btn_Action) in
+            self.txtLists = alert.textFields?[0].text ?? ""
+            if self.txtLists.count > 0 {
+                self.addLists.append(self.txtLists)
+                CoreDataManager.sharedManager.insertData(entityName: KeyLists.share.nameLists, forKey: KeyLists.share.keyLists, value: self.txtLists)
+            }
+            self.addLists.removeAll()
+            CoreDataManager.sharedManager.fetchData(array: &self.addLists, entityName: KeyLists.share.nameLists, forKey: KeyLists.share.keyLists)
+            DispatchQueue.main.async {
+                self.ListTableView.reloadData()
+            }
+        }
+        let btn_Cancel = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel)
+        alert.addTextField { (txtList) in
+        }
+        alert.addAction(btn_Cancel)
+        alert.addAction(btn_Action)
+        
+        self.present(alert, animated: true, completion: nil)
     }
-    
 }
 
 extension ListsViewController: UITableViewDelegate {
@@ -103,20 +115,59 @@ extension ListsViewController: UITableViewDelegate {
 }
 
 extension ListsViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.nameLists.count
+        if section == 0 {
+            return self.nameLists.count
+        } else {
+            return self.addLists.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LISTSTABLEVIEW", for: indexPath) as! LitsTableViewCell
-        
-        cell.lblLists.text = nameLists[indexPath.row]
-        cell.iconLists.image = iconImages[indexPath.row]
-        
-        return cell
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LISTSTABLEVIEW", for: indexPath) as! LitsTableViewCell
+            
+            cell.lblLists.text = nameLists[indexPath.row]
+            
+            return cell
+        } else {
+            let cell2 = tableView.dequeueReusableCell(withIdentifier: "LISTSADD", for: indexPath) as! ListAddTableViewCell
+            
+            cell2.lblAddLists.text = addLists[indexPath.row]
+            cell2.btnListsDel.addTarget(self, action: #selector(delCell(_:)), for: .touchUpInside)
+            
+            return cell2
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    @objc func delCell(_ sender: UIButton) {
+        
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Thông báo", message: "Xoá nội dung sẽ không thể khôi phục", preferredStyle: UIAlertController.Style.alert)
+            let btn_Action = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) { (btn_Action) in
+                let hitPoint = sender.convert(CGPoint.zero, to: self.ListTableView)
+                
+                if let indexPath = self.ListTableView.indexPathForRow(at: hitPoint) {
+                    self.addLists.remove(at: indexPath.row)
+                    CoreDataManager.sharedManager.deleteData(entityName: KeyLists.share.nameLists, index: indexPath.row)
+                    self.ListTableView.beginUpdates()
+                    self.ListTableView.deleteRows(at: [indexPath], with: .automatic)
+                    self.ListTableView.endUpdates()
+                }
+            }
+            let btn_Cancel = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel)
+            alert.addAction(btn_Cancel)
+            alert.addAction(btn_Action)
+            
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Lists" representedClassName="Lists" syncable="YES" codeGenerationType="class">
+        <attribute name="lblLists" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="TodoLists" representedClassName="TodoLists" syncable="YES" codeGenerationType="class">
         <attribute name="lblTodoLists" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -9,5 +12,6 @@
     <elements>
         <element name="TodoLists" positionX="-63" positionY="-18" width="128" height="60"/>
         <element name="TodoListsDel" positionX="-54" positionY="0" width="128" height="60"/>
+        <element name="Lists" positionX="-36" positionY="18" width="128" height="60"/>
     </elements>
 </model>

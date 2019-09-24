@@ -19,7 +19,7 @@ class TodoListsViewController: UIViewController {
     
     @IBOutlet weak var tableListsDel: UITableView!
     
-    var txtLists = ""
+    var txtTodoLists = ""
     var nameLists = [String]()
     var listsDel = [String]()
     
@@ -98,10 +98,10 @@ extension TodoListsViewController: UITableViewDelegate {
             DispatchQueue.main.async {
                 let alert = UIAlertController(title: "Sửa Nội Dung", message: "Nhập nội dung cần sửa", preferredStyle: UIAlertController.Style.alert)
                 let btn_Action = UIAlertAction(title: "Sửa", style: UIAlertAction.Style.default) { (btn_Action) in
-                    self.txtLists = alert.textFields?[0].text ?? ""
-                    if self.txtLists.count > 0 {
-                        self.nameLists[indexPath.row] =  self.txtLists
-                        CoreDataManager.sharedManager.updateData(array: &self.nameLists, value: self.txtLists, index: (self.nameLists.count - indexPath.row - 1), entityName: KeyCoreData.share.nameTodoLists, forKey: KeyCoreData.share.keyTodoList)
+                    self.txtTodoLists = alert.textFields?[0].text ?? ""
+                    if self.txtTodoLists.count > 0 {
+                        self.nameLists[indexPath.row] =  self.txtTodoLists
+                        CoreDataManager.sharedManager.updateData(array: &self.nameLists, value: self.txtTodoLists, index: (self.nameLists.count - indexPath.row - 1), entityName: KeyCoreData.share.nameTodoLists, forKey: KeyCoreData.share.keyTodoList)
                         self.nameLists.removeAll()
                         CoreDataManager.sharedManager.fetchData(array: &self.nameLists, entityName: KeyCoreData.share.nameTodoLists , forKey: KeyCoreData.share.keyTodoList)
                     }

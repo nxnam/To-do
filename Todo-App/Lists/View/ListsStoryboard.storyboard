@@ -52,7 +52,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AsU-Oa-uXd">
-                                <rect key="frame" x="334" y="387.5" width="50" height="50"/>
+                                <rect key="frame" x="334" y="432.5" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.29411764705882354" green="0.78823529411764703" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="mNe-M2-JXO"/>
@@ -64,40 +64,98 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Am5-B6-dTO">
-                                <rect key="frame" x="10" y="193.5" width="394" height="179"/>
+                                <rect key="frame" x="10" y="193.5" width="394" height="224"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" alpha="0.0" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LISTSTABLEVIEW" rowHeight="82" id="reH-s9-h2D" customClass="LitsTableViewCell" customModule="Todo_App" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="394" height="82"/>
+                                    <tableViewCell clipsSubviews="YES" alpha="0.0" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LISTSTABLEVIEW" rowHeight="94" id="reH-s9-h2D" customClass="LitsTableViewCell" customModule="Todo_App" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="394" height="94"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="reH-s9-h2D" id="ecb-IC-g7P">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="82"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="94"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Bhv-Si-QhB">
-                                                    <rect key="frame" x="10" y="30" width="22" height="22"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="all" translatesAutoresizingMaskIntoConstraints="NO" id="Bhv-Si-QhB">
+                                                    <rect key="frame" x="10" y="36" width="22" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="22" id="5yc-cs-amy"/>
                                                         <constraint firstAttribute="height" constant="22" id="G9p-xz-dAB"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All to-do's" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zoi-bl-8ax">
-                                                    <rect key="frame" x="42" y="31" width="74.5" height="20"/>
+                                                    <rect key="frame" x="42" y="37" width="74.5" height="20"/>
                                                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KOt-uH-lBI">
+                                                    <rect key="frame" x="0.0" y="92" width="394" height="2"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="2" id="18x-Ab-gcX"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="zoi-bl-8ax" firstAttribute="centerY" secondItem="ecb-IC-g7P" secondAttribute="centerY" id="2Fm-8u-F5V"/>
+                                                <constraint firstItem="KOt-uH-lBI" firstAttribute="leading" secondItem="ecb-IC-g7P" secondAttribute="leading" id="69d-22-hY1"/>
                                                 <constraint firstItem="zoi-bl-8ax" firstAttribute="leading" secondItem="Bhv-Si-QhB" secondAttribute="trailing" constant="10" id="D3i-J7-Eaj"/>
+                                                <constraint firstAttribute="trailing" secondItem="KOt-uH-lBI" secondAttribute="trailing" id="gdX-Ga-J3S"/>
                                                 <constraint firstItem="Bhv-Si-QhB" firstAttribute="centerY" secondItem="ecb-IC-g7P" secondAttribute="centerY" id="h25-pq-99H"/>
+                                                <constraint firstAttribute="bottom" secondItem="KOt-uH-lBI" secondAttribute="bottom" id="mqb-Pv-jXi"/>
                                                 <constraint firstItem="Bhv-Si-QhB" firstAttribute="leading" secondItem="ecb-IC-g7P" secondAttribute="leading" constant="10" id="o0P-Qb-v8a"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="iconLists" destination="Bhv-Si-QhB" id="Ufb-rj-NT7"/>
                                             <outlet property="lblLists" destination="zoi-bl-8ax" id="rdS-bW-Trs"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LISTSADD" rowHeight="93" id="Bqy-sW-YWy" customClass="ListAddTableViewCell" customModule="Todo_App" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="122" width="394" height="93"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bqy-sW-YWy" id="Bl7-F2-mI2">
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="93"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="QX4-8d-TuC">
+                                                    <rect key="frame" x="10" y="23.5" width="46.5" height="46.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="QX4-8d-TuC" secondAttribute="height" multiplier="1:1" id="9xY-cQ-xGI"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOf-bt-aUC">
+                                                    <rect key="frame" x="66.5" y="36.5" width="42" height="20"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JF2-8q-myu">
+                                                    <rect key="frame" x="0.0" y="91" width="394" height="2"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="2" id="Pe7-1T-8Ra"/>
+                                                    </constraints>
+                                                </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Wj-Ue-cD5">
+                                                    <rect key="frame" x="358" y="35.5" width="16" height="22"/>
+                                                    <state key="normal" image="delete"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="JF2-8q-myu" secondAttribute="trailing" id="3Gy-Xv-6ci"/>
+                                                <constraint firstItem="OOf-bt-aUC" firstAttribute="leading" secondItem="QX4-8d-TuC" secondAttribute="trailing" constant="10" id="4Hd-G4-A63"/>
+                                                <constraint firstItem="OOf-bt-aUC" firstAttribute="centerY" secondItem="Bl7-F2-mI2" secondAttribute="centerY" id="8GQ-s8-HvH"/>
+                                                <constraint firstAttribute="trailing" secondItem="4Wj-Ue-cD5" secondAttribute="trailing" constant="20" id="9EG-QC-j2F"/>
+                                                <constraint firstItem="QX4-8d-TuC" firstAttribute="leading" secondItem="Bl7-F2-mI2" secondAttribute="leading" constant="10" id="Aon-dL-pQG"/>
+                                                <constraint firstItem="QX4-8d-TuC" firstAttribute="centerY" secondItem="Bl7-F2-mI2" secondAttribute="centerY" id="dr9-19-9sH"/>
+                                                <constraint firstItem="QX4-8d-TuC" firstAttribute="height" secondItem="Bl7-F2-mI2" secondAttribute="height" multiplier="1/2" id="jKz-uF-LdB"/>
+                                                <constraint firstItem="4Wj-Ue-cD5" firstAttribute="centerY" secondItem="Bl7-F2-mI2" secondAttribute="centerY" id="k1h-iI-vjp"/>
+                                                <constraint firstItem="JF2-8q-myu" firstAttribute="leading" secondItem="Bl7-F2-mI2" secondAttribute="leading" id="pD7-77-Y3a"/>
+                                                <constraint firstAttribute="bottom" secondItem="JF2-8q-myu" secondAttribute="bottom" id="v4m-eZ-qUb"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="btnListsDel" destination="4Wj-Ue-cD5" id="54J-g3-q2G"/>
+                                            <outlet property="lblAddLists" destination="OOf-bt-aUC" id="Zgf-g0-9Qd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -112,7 +170,7 @@
                             <constraint firstItem="Lph-68-PtT" firstAttribute="trailing" secondItem="AsU-Oa-uXd" secondAttribute="trailing" constant="30" id="Rpv-bj-nNZ"/>
                             <constraint firstItem="AsU-Oa-uXd" firstAttribute="top" secondItem="Am5-B6-dTO" secondAttribute="bottom" constant="15" id="TIA-Gs-oX3"/>
                             <constraint firstItem="Am5-B6-dTO" firstAttribute="top" secondItem="fn4-g6-IPh" secondAttribute="bottom" id="XQ4-Yb-avR"/>
-                            <constraint firstItem="Am5-B6-dTO" firstAttribute="height" secondItem="EBd-nr-WzC" secondAttribute="height" multiplier="1/5" id="dVM-Q3-wch"/>
+                            <constraint firstItem="Am5-B6-dTO" firstAttribute="height" secondItem="EBd-nr-WzC" secondAttribute="height" multiplier="1/4" id="dVM-Q3-wch"/>
                             <constraint firstItem="Am5-B6-dTO" firstAttribute="leading" secondItem="Lph-68-PtT" secondAttribute="leading" constant="10" id="ifB-iK-pka"/>
                             <constraint firstItem="fn4-g6-IPh" firstAttribute="leading" secondItem="Lph-68-PtT" secondAttribute="leading" id="xhf-uZ-rru"/>
                         </constraints>
@@ -135,6 +193,8 @@
     <resources>
         <image name="Userpic" width="41" height="40"/>
         <image name="add" width="28" height="28"/>
-        <image name="background" width="375" height="812"/>
+        <image name="all" width="22" height="21"/>
+        <image name="delete" width="16" height="21"/>
+        <image name="home" width="20" height="16"/>
     </resources>
 </document>
