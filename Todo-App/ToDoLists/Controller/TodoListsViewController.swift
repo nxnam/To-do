@@ -19,14 +19,15 @@ class TodoListsViewController: UIViewController {
     
     @IBOutlet weak var tableListsDel: UITableView!
     
+    @IBOutlet weak var lblTitle: UILabel!
+    
     var txtTodoLists = ""
     var nameLists = [String]()
     var listsDel = [String]()
+    var todoListsTitle = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationController?.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "BACK", style: .plain, target: self, action: nil)
         
         tableListsView.dataSource = self
         tableListsView.delegate = self
@@ -39,6 +40,8 @@ class TodoListsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        lblTitle.text = todoListsTitle
         
         //fetchData()
         CoreDataManager.sharedManager.fetchData(array: &nameLists, entityName: KeyCoreData.share.nameTodoLists , forKey: KeyCoreData.share.keyTodoList)
@@ -87,7 +90,11 @@ class TodoListsViewController: UIViewController {
     }
     
     @IBAction func btn_Back(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "ListsStoryboard", bundle: nil)
+        
+        let Lists = storyboard.instantiateViewController(withIdentifier: "LISTS") as! ListsViewController
+        
+        self.present(Lists, animated: false, completion: nil)
     }
     
 }

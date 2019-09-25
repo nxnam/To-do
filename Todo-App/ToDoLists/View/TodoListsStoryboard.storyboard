@@ -218,6 +218,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="PR3-Wr-uD0"/>
                     <connections>
+                        <outlet property="lblTitle" destination="gUN-yO-IYD" id="msL-V9-utf"/>
                         <outlet property="listView" destination="Qah-mP-2UQ" id="zle-JQ-8Td"/>
                         <outlet property="tableListsDel" destination="w6z-85-dIT" id="iEa-pv-fek"/>
                         <outlet property="tableListsView" destination="2c3-mJ-5gl" id="bg6-4U-KSA"/>

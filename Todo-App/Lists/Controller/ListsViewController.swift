@@ -24,11 +24,12 @@ class ListsViewController: UIViewController {
     var nameLists = [String]()
     var addLists = [String]()
     var txtLists = ""
+    var todoTitle = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nameLists.append("All to-do's")
+        nameLists.append("All")
         
         self.ListTableView.dataSource = self
         self.ListTableView.delegate = self
@@ -110,6 +111,12 @@ extension ListsViewController: UITableViewDelegate {
         
         let Todo = storyboard.instantiateViewController(withIdentifier: "TODOLISTS") as! TodoListsViewController
         
+        if indexPath.section == 0 {
+            Todo.todoListsTitle = nameLists[indexPath.row]
+        } else {
+            Todo.todoListsTitle = addLists[indexPath.row]
+        }
+        
         self.present(Todo, animated: true, completion: nil)
     }
 }
@@ -157,7 +164,7 @@ extension ListsViewController: UITableViewDataSource {
                 
                 if let indexPath = self.ListTableView.indexPathForRow(at: hitPoint) {
                     self.addLists.remove(at: indexPath.row)
-                    CoreDataManager.sharedManager.deleteData(entityName: KeyLists.share.nameLists, index: indexPath.row)
+                    CoreDataManager.sharedManager.deleteData(entityName: KeyLists.share.nameLists, index: self.addLists.count - indexPath.row)
                     self.ListTableView.beginUpdates()
                     self.ListTableView.deleteRows(at: [indexPath], with: .automatic)
                     self.ListTableView.endUpdates()
