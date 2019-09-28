@@ -60,7 +60,7 @@ class CoreDataManager {
         request.returnsObjectsAsFaults = true
         
         do {
-            var results = try context.fetch(request)
+            let results = try context.fetch(request)
             
             let objManager = results[index] as! NSManagedObject
             

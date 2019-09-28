@@ -28,8 +28,6 @@
 		FB1379162338D89000E8FFFE /* KeyLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1379152338D89000E8FFFE /* KeyLists.swift */; };
 		FB24BE422331DEEE00CDFBC6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB24BE412331DEEE00CDFBC6 /* CoreDataManager.swift */; };
 		FB24BE4E23339AE800CDFBC6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB24BE4D23339AE800CDFBC6 /* GoogleService-Info.plist */; };
-		FB24BE5023339BFB00CDFBC6 /* RegisterStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB24BE4F23339BFB00CDFBC6 /* RegisterStoryboard.storyboard */; };
-		FB24BE5223339C2F00CDFBC6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB24BE5123339C2F00CDFBC6 /* RegisterViewController.swift */; };
 		FB48762D232EA0E5008E5DC9 /* TodoListsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB48762C232EA0E5008E5DC9 /* TodoListsTableViewCell.swift */; };
 		FBC53B91232FF3AD009E8647 /* TodoDelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC53B90232FF3AD009E8647 /* TodoDelTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -61,8 +59,6 @@
 		FB1379152338D89000E8FFFE /* KeyLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KeyLists.swift; path = "Todo-App/Lists/View/KeyLists.swift"; sourceTree = SOURCE_ROOT; };
 		FB24BE412331DEEE00CDFBC6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		FB24BE4D23339AE800CDFBC6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		FB24BE4F23339BFB00CDFBC6 /* RegisterStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegisterStoryboard.storyboard; sourceTree = "<group>"; };
-		FB24BE5123339C2F00CDFBC6 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		FB48762C232EA0E5008E5DC9 /* TodoListsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListsTableViewCell.swift; sourceTree = "<group>"; };
 		FBC53B90232FF3AD009E8647 /* TodoDelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDelTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,7 +141,6 @@
 			isa = PBXGroup;
 			children = (
 				FB0C43C7232B4E7B00C07FAD /* LogInStoryboard.storyboard */,
-				FB24BE4F23339BFB00CDFBC6 /* RegisterStoryboard.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -154,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				FB0C43C9232B4E9400C07FAD /* LogInViewController.swift */,
-				FB24BE5123339C2F00CDFBC6 /* RegisterViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -351,7 +345,6 @@
 				FB0C43D3232C848D00C07FAD /* ListsStoryboard.storyboard in Resources */,
 				FB0C43E7232D48E200C07FAD /* TodoListsStoryboard.storyboard in Resources */,
 				FB0C43B9232B4CE000C07FAD /* Assets.xcassets in Resources */,
-				FB24BE5023339BFB00CDFBC6 /* RegisterStoryboard.storyboard in Resources */,
 				FB0C43B7232B4CDE00C07FAD /* Main.storyboard in Resources */,
 				FB0C43C8232B4E7B00C07FAD /* LogInStoryboard.storyboard in Resources */,
 				FB24BE4E23339AE800CDFBC6 /* GoogleService-Info.plist in Resources */,
@@ -419,7 +412,6 @@
 				FB0C43CA232B4E9400C07FAD /* LogInViewController.swift in Sources */,
 				FB1379102338CEFD00E8FFFE /* TodoData.xcdatamodeld in Sources */,
 				FB0F0B672333B0FA001B1A1D /* SingLogInData.swift in Sources */,
-				FB24BE5223339C2F00CDFBC6 /* RegisterViewController.swift in Sources */,
 				FB1379142338D65F00E8FFFE /* ListAddTableViewCell.swift in Sources */,
 				FB0C43CD232B53DD00C07FAD /* Extension.swift in Sources */,
 				FB1379162338D89000E8FFFE /* KeyLists.swift in Sources */,

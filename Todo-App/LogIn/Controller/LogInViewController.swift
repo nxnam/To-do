@@ -28,6 +28,12 @@ class LogInViewController: UIViewController {
         return .lightContent
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     func setupTextField() {
         txtEmail.becomeFirstResponder()
         
@@ -56,15 +62,6 @@ class LogInViewController: UIViewController {
     @IBAction func btl_LogIn(_ sender: Any) {
         handleLogin()
     }
-    
-    @IBAction func btn_Register(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "RegisterStoryboard", bundle: nil)
-        
-        let Register = storyboard.instantiateViewController(withIdentifier: "REGISTER") as! RegisterViewController
-        
-        self.present(Register, animated: true)
-    }
-    
     
     
     func handleLogin() {
@@ -95,7 +92,7 @@ class LogInViewController: UIViewController {
             
             let Lists = storyboard.instantiateViewController(withIdentifier: "LISTS") as! ListsViewController
             
-            self.present(Lists, animated: true)
+            self.navigationController?.pushViewController(Lists, animated: true)
         }
         
     }

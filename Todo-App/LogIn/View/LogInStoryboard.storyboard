@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -42,13 +40,11 @@
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" disabledBackground="background" translatesAutoresizingMaskIntoConstraints="NO" id="oQG-Rw-U0F">
                                         <rect key="frame" x="11" y="10" width="392" height="45"/>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EIR-7J-cfJ">
                                         <rect key="frame" x="11" y="60" width="392" height="44.5"/>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
@@ -86,29 +82,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdE-7X-EKF">
-                                <rect key="frame" x="11" y="530" width="392" height="56"/>
-                                <color key="backgroundColor" red="0.29411764709999999" green="0.78823529410000004" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
-                                <state key="normal" title="Register Now!">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="btn_Register:" destination="2Ny-dZ-9uQ" eventType="touchUpInside" id="L0j-b8-ize"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="KA5-1f-vg3" firstAttribute="leading" secondItem="nZh-0X-Drm" secondAttribute="leading" id="6Wj-Rg-rpX"/>
                             <constraint firstItem="Whq-0B-5Zo" firstAttribute="leading" secondItem="nZh-0X-Drm" secondAttribute="leading" id="9Xw-2o-mhE"/>
-                            <constraint firstItem="cdE-7X-EKF" firstAttribute="centerX" secondItem="YdJ-iu-fab" secondAttribute="centerX" id="HTJ-FE-YLy"/>
                             <constraint firstItem="KA5-1f-vg3" firstAttribute="height" secondItem="YdJ-iu-fab" secondAttribute="height" multiplier="1/4" id="IPq-Rn-vcr"/>
                             <constraint firstItem="KA5-1f-vg3" firstAttribute="top" secondItem="Whq-0B-5Zo" secondAttribute="bottom" id="PfO-fp-eTi"/>
-                            <constraint firstItem="cdE-7X-EKF" firstAttribute="height" secondItem="7Hj-16-bip" secondAttribute="height" id="gwF-8E-RIG"/>
-                            <constraint firstItem="cdE-7X-EKF" firstAttribute="width" secondItem="7Hj-16-bip" secondAttribute="width" id="hqq-aI-Ghm"/>
                             <constraint firstItem="KA5-1f-vg3" firstAttribute="centerX" secondItem="YdJ-iu-fab" secondAttribute="centerX" id="nyd-wW-dw5"/>
-                            <constraint firstItem="cdE-7X-EKF" firstAttribute="top" secondItem="KA5-1f-vg3" secondAttribute="bottom" constant="-30" id="rFN-K6-Fud"/>
                             <constraint firstItem="KA5-1f-vg3" firstAttribute="centerY" secondItem="YdJ-iu-fab" secondAttribute="centerY" id="skh-Mj-P9R"/>
                             <constraint firstItem="Whq-0B-5Zo" firstAttribute="height" secondItem="YdJ-iu-fab" secondAttribute="height" multiplier="1/6" id="wql-bf-Z7L"/>
                             <constraint firstItem="Whq-0B-5Zo" firstAttribute="trailing" secondItem="nZh-0X-Drm" secondAttribute="trailing" id="zf0-kE-2a9"/>

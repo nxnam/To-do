@@ -21,6 +21,12 @@ class ViewController: UIViewController {
         setupBackground()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
     }
@@ -37,7 +43,7 @@ class ViewController: UIViewController {
         
         let LogIn = storyboard.instantiateViewController(withIdentifier: "LOGIN") as! LogInViewController
         
-        self.present(LogIn, animated: true)
+        self.navigationController?.pushViewController(LogIn, animated: true)
     }
 
 

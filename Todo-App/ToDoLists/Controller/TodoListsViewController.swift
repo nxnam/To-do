@@ -46,6 +46,8 @@ class TodoListsViewController: UIViewController {
         //fetchData()
         CoreDataManager.sharedManager.fetchData(array: &nameLists, entityName: KeyCoreData.share.nameTodoLists , forKey: KeyCoreData.share.keyTodoList)
         CoreDataManager.sharedManager.fetchData(array: &listsDel, entityName: KeyCoreData.share.nameTodoListsDel, forKey: KeyCoreData.share.keyTodoListDel)
+        
+        customNavigationBar()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -56,6 +58,12 @@ class TodoListsViewController: UIViewController {
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
+    }
+    
+    func customNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .done, target: self, action: nil)
+        navigationController?.navigationBar.backgroundColor = .none
+        navigationController?.navigationBar.tintColor = .white
     }
     
     func setupListsView() {

@@ -43,15 +43,31 @@ class ListsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
+        //deSel
+        if let index = self.ListTableView.indexPathForSelectedRow{
+            self.ListTableView.deselectRow(at: index, animated: true)
+        }
+        
         //fetchData
         CoreDataManager.sharedManager.fetchData(array: &self.addLists, entityName: KeyLists.share.nameLists, forKey: KeyLists.share.keyLists)
         
+        customNavigationBar()
         getUserName()
         viewDidLayoutSubviews()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
+    }
+    
+    func customNavigationBar() {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     func getUserName() {
@@ -117,7 +133,7 @@ extension ListsViewController: UITableViewDelegate {
             Todo.todoListsTitle = addLists[indexPath.row]
         }
         
-        self.present(Todo, animated: true, completion: nil)
+        navigationController?.pushViewController(Todo, animated: true)
     }
 }
 
