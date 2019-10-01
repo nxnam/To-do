@@ -22,7 +22,7 @@ class TodoListsViewController: UIViewController {
     @IBOutlet weak var lblTitle: UILabel!
     
     var txtTodoLists = ""
-    var nameLists = [String]()
+    var nameTodoLists = [String]()
     var listsDel = [String]()
     var todoListsTitle = ""
     
@@ -34,6 +34,10 @@ class TodoListsViewController: UIViewController {
         tableListsDel.dataSource = self
         tableListsDel.delegate = self
         
+        //fetchData()
+        CoreDataManager.sharedManager.fetchData(array: &nameTodoLists, entityName: KeyCoreData.share.nameTodoLists , forKey: KeyCoreData.share.keyTodoList)
+        CoreDataManager.sharedManager.fetchData(array: &listsDel, entityName: KeyCoreData.share.nameTodoListsDel, forKey: KeyCoreData.share.keyTodoListDel)
+        
         setupListsView()
         setupBackground()
     }
@@ -42,10 +46,6 @@ class TodoListsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         lblTitle.text = todoListsTitle
-        
-        //fetchData()
-        CoreDataManager.sharedManager.fetchData(array: &nameLists, entityName: KeyCoreData.share.nameTodoLists , forKey: KeyCoreData.share.keyTodoList)
-        CoreDataManager.sharedManager.fetchData(array: &listsDel, entityName: KeyCoreData.share.nameTodoListsDel, forKey: KeyCoreData.share.keyTodoListDel)
         
         customNavigationBar()
     }
@@ -89,8 +89,8 @@ class TodoListsViewController: UIViewController {
             }
         }
         txtActivity.text = ""
-        nameLists.removeAll()
-        CoreDataManager.sharedManager.fetchData(array: &nameLists, entityName: KeyCoreData.share.nameTodoLists , forKey: KeyCoreData.share.keyTodoList)
+        nameTodoLists.removeAll()
+        CoreDataManager.sharedManager.fetchData(array: &nameTodoLists, entityName: KeyCoreData.share.nameTodoLists , forKey: KeyCoreData.share.keyTodoList)
         
         DispatchQueue.main.async {
             self.tableListsView.reloadData()
@@ -115,10 +115,10 @@ extension TodoListsViewController: UITableViewDelegate {
                 let btn_Action = UIAlertAction(title: "Sửa", style: UIAlertAction.Style.default) { (btn_Action) in
                     self.txtTodoLists = alert.textFields?[0].text ?? ""
                     if self.txtTodoLists.count > 0 {
-                        self.nameLists[indexPath.row] =  self.txtTodoLists
-                        CoreDataManager.sharedManager.updateData(array: &self.nameLists, value: self.txtTodoLists, index: (self.nameLists.count - indexPath.row - 1), entityName: KeyCoreData.share.nameTodoLists, forKey: KeyCoreData.share.keyTodoList)
-                        self.nameLists.removeAll()
-                        CoreDataManager.sharedManager.fetchData(array: &self.nameLists, entityName: KeyCoreData.share.nameTodoLists , forKey: KeyCoreData.share.keyTodoList)
+                        self.nameTodoLists[indexPath.row] =  self.txtTodoLists
+                        CoreDataManager.sharedManager.updateData(array: &self.nameTodoLists, value: self.txtTodoLists, index: (self.nameTodoLists.count - indexPath.row - 1), entityName: KeyCoreData.share.nameTodoLists, forKey: KeyCoreData.share.keyTodoList)
+                        self.nameTodoLists.removeAll()
+                        CoreDataManager.sharedManager.fetchData(array: &self.nameTodoLists, entityName: KeyCoreData.share.nameTodoLists , forKey: KeyCoreData.share.keyTodoList)
                     }
                     DispatchQueue.main.async {
                         self.tableListsView.reloadData()
@@ -142,7 +142,7 @@ extension TodoListsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if tableView == self.tableListsView {
-            return nameLists.count
+            return nameTodoLists.count
         } else {
             return listsDel.count
         }
@@ -153,7 +153,7 @@ extension TodoListsViewController: UITableViewDataSource {
         if tableView == self.tableListsView,
             let cell = tableView.dequeueReusableCell(withIdentifier: "HOMELISTS") as? TodoListsTableViewCell {
             
-            cell.lblNameLists.text = self.nameLists[indexPath.row]
+            cell.lblNameLists.text = self.nameTodoLists[indexPath.row]
             
             cell.btnDel.addTarget(self, action: #selector(delCell(_:)), for: .touchUpInside)
             
@@ -182,14 +182,14 @@ extension TodoListsViewController: UITableViewDataSource {
             let btn_Action = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) { (btn_Action) in
                 let hitPoint = sender.convert(CGPoint.zero, to: self.tableListsView)
                 if let indexPath = self.tableListsView.indexPathForRow(at: hitPoint) {
-                    self.listsDel.insert(self.nameLists[indexPath.row], at: 0)
-                    CoreDataManager.sharedManager.insertData(entityName: KeyCoreData.share.nameTodoListsDel, forKey: KeyCoreData.share.keyTodoListDel, value: self.nameLists[indexPath.row])
+                    self.listsDel.insert(self.nameTodoLists[indexPath.row], at: 0)
+                    CoreDataManager.sharedManager.insertData(entityName: KeyCoreData.share.nameTodoListsDel, forKey: KeyCoreData.share.keyTodoListDel, value: self.nameTodoLists[indexPath.row])
                     
                     DispatchQueue.main.async {
                         self.tableListsDel.reloadData()
                     }
                     
-                    self.nameLists.remove(at: indexPath.row)
+                    self.nameTodoLists.remove(at: indexPath.row)
                     CoreDataManager.sharedManager.deleteData(entityName: KeyCoreData.share.nameTodoLists, index: indexPath.row)
                     self.tableListsView.beginUpdates()
                     self.tableListsView.deleteRows(at: [indexPath], with: .automatic)

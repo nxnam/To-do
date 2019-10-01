@@ -13,5 +13,7 @@ class KeyLists {
     static let share = KeyLists()
     
     let nameLists = "Lists"
+    let nameListsArr = "ListsArr"
     let keyLists = "lblLists"
+    let keyTodoListsArr = "todoListsArr"
 }
