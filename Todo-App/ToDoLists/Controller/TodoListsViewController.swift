@@ -96,15 +96,6 @@ class TodoListsViewController: UIViewController {
             self.tableListsView.reloadData()
         }
     }
-    
-    @IBAction func btn_Back(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "ListsStoryboard", bundle: nil)
-        
-        let Lists = storyboard.instantiateViewController(withIdentifier: "LISTS") as! ListsViewController
-        
-        self.present(Lists, animated: false, completion: nil)
-    }
-    
 }
 
 extension TodoListsViewController: UITableViewDelegate {

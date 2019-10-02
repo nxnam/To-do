@@ -55,6 +55,7 @@ class ListsViewController: UIViewController {
             self.ListTableView.deselectRow(at: index, animated: true)
         }
         
+        
         customNavigationBar()
         getUserName()
         viewDidLayoutSubviews()
