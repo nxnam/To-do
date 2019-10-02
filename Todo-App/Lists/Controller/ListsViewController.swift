@@ -140,9 +140,11 @@ extension ListsViewController: UITableViewDelegate {
             Todo.todoListsTitle = nameLists[indexPath.row]
         } else {
             Todo.todoListsTitle = addLists[indexPath.row]
+            
+            Todo.nameTodoLists = todoLists[indexPath.row]
+            
+            Todo.index = indexPath.row
         }
-        
-        Todo.nameTodoLists = todoLists[indexPath.row]
         
         navigationController?.pushViewController(Todo, animated: true)
     }
