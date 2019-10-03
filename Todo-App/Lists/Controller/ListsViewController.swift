@@ -40,11 +40,6 @@ class ListsViewController: UIViewController {
         
         self.ListTableView.isUserInteractionEnabled = true
         
-        //fetchData
-        CoreDataManager.sharedManager.fetchData(array: &self.addLists, entityName: KeyLists.share.nameLists, forKey: KeyLists.share.keyLists)
-        CoreDataManager.sharedManager.fetchDataArray(array: &self.todoLists, entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr)
-        CoreDataManager.sharedManager.fetchDataArray(array: &self.todoListsDel, entityName: KeyLists.share.nameListsDelArr, forKey: KeyLists.share.keyTodoListsDelArr)
-        
         btnAdd.layer.cornerRadius = 25
         setupBackground()
     }
@@ -57,6 +52,11 @@ class ListsViewController: UIViewController {
             self.ListTableView.deselectRow(at: index, animated: true)
         }
         
+        //fetchData
+        CoreDataManager.sharedManager.fetchData(array: &self.addLists, entityName: KeyLists.share.nameLists, forKey: KeyLists.share.keyLists)
+        CoreDataManager.sharedManager.fetchDataArray(array: &self.todoLists, entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr)
+        CoreDataManager.sharedManager.fetchDataArray(array: &self.todoListsDel, entityName: KeyLists.share.nameListsDelArr, forKey: KeyLists.share.keyTodoListsDelArr)
+        
         customNavigationBar()
         getUserName()
         viewDidLayoutSubviews()
@@ -64,6 +64,10 @@ class ListsViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        addLists.removeAll()
+        todoLists.removeAll()
+        todoListsDel.removeAll()
         
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }

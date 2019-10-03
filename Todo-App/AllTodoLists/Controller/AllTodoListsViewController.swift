@@ -25,6 +25,8 @@ class AllTodoListsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
+        AllTodoTableView.layer.cornerRadius = 5
+        
         customNavigationBar()
         setupBackground()
     }
