@@ -39,8 +39,8 @@ class TodoListsViewController: UIViewController {
         tableListsDel.delegate = self
         
         //fetchData()
-        CoreDataManager.sharedManager.fetchDataArray(array: &self.nameTodoListsToLists, entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr)
-        CoreDataManager.sharedManager.fetchDataArray(array: &self.nameTodoListsDelToLists, entityName: KeyLists.share.nameListsDelArr, forKey: KeyLists.share.keyTodoListsDelArr)
+        CoreDataManager.sharedManager.fetchData(array: &self.nameTodoListsToLists, entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr)
+        CoreDataManager.sharedManager.fetchData(array: &self.nameTodoListsDelToLists, entityName: KeyLists.share.nameListsDelArr, forKey: KeyLists.share.keyTodoListsDelArr)
         
         //setupView
         setupListsView()
@@ -61,8 +61,8 @@ class TodoListsViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        CoreDataManager.sharedManager.updateDataArray(array: &nameTodoListsToLists, value: nameTodoLists, index: nameTodoListsDelToLists.count - index - 1, entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr)
-        CoreDataManager.sharedManager.updateDataArray(array: &nameTodoListsDelToLists, value: listsDel, index: nameTodoListsDelToLists.count - index - 1, entityName: KeyLists.share.nameListsDelArr, forKey: KeyLists.share.keyTodoListsDelArr)
+        CoreDataManager.sharedManager.updateData(array: &nameTodoListsToLists, value: nameTodoLists, index: nameTodoListsDelToLists.count - index - 1, entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr)
+        CoreDataManager.sharedManager.updateData(array: &nameTodoListsDelToLists, value: listsDel, index: nameTodoListsDelToLists.count - index - 1, entityName: KeyLists.share.nameListsDelArr, forKey: KeyLists.share.keyTodoListsDelArr)
         
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
@@ -97,7 +97,7 @@ class TodoListsViewController: UIViewController {
         if let txtActivity = txtActivity.text {
             if txtActivity.count > 0 {
                 self.nameTodoLists.insert(txtActivity, at: 0)
-                CoreDataManager.sharedManager.updateDataArray(array: &nameTodoListsToLists, value: nameTodoLists, index: nameTodoListsToLists.count - index - 1, entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr)
+                CoreDataManager.sharedManager.updateData(array: &nameTodoListsToLists, value: nameTodoLists, index: nameTodoListsToLists.count - index - 1, entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr)
             }
         }
         txtActivity.text = ""
@@ -117,7 +117,7 @@ extension TodoListsViewController: UITableViewDelegate {
                     self.txtTodoLists = alert.textFields?[0].text ?? ""
                     if self.txtTodoLists.count > 0 {
                         self.nameTodoLists[indexPath.row] =  self.txtTodoLists
-                        CoreDataManager.sharedManager.updateDataArray(array: &self.nameTodoListsToLists, value: self.nameTodoLists, index: self.nameTodoListsToLists.count - self.index - 1, entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr)
+                        CoreDataManager.sharedManager.updateData(array: &self.nameTodoListsToLists, value: self.nameTodoLists, index: self.nameTodoListsToLists.count - self.index - 1, entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr)
                     }
                     DispatchQueue.main.async {
                         self.tableListsView.reloadData()
@@ -139,7 +139,6 @@ extension TodoListsViewController: UITableViewDelegate {
 
 extension TodoListsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         if tableView == self.tableListsView {
             return nameTodoLists.count
         } else {
@@ -182,14 +181,14 @@ extension TodoListsViewController: UITableViewDataSource {
                 let hitPoint = sender.convert(CGPoint.zero, to: self.tableListsView)
                 if let indexPath = self.tableListsView.indexPathForRow(at: hitPoint) {
                     self.listsDel.insert(self.nameTodoLists[indexPath.row], at: 0)
-                    CoreDataManager.sharedManager.updateDataArray(array: &self.nameTodoListsDelToLists, value: self.listsDel, index: self.nameTodoListsToLists.count - self.index - 1, entityName: KeyLists.share.nameListsDelArr, forKey: KeyLists.share.keyTodoListsDelArr)
+                    CoreDataManager.sharedManager.updateData(array: &self.nameTodoListsDelToLists, value: self.listsDel, index: self.nameTodoListsToLists.count - self.index - 1, entityName: KeyLists.share.nameListsDelArr, forKey: KeyLists.share.keyTodoListsDelArr)
                     
                     DispatchQueue.main.async {
                         self.tableListsDel.reloadData()
                     }
                     
                     self.nameTodoLists.remove(at: indexPath.row)
-                    CoreDataManager.sharedManager.updateDataArray(array: &self.nameTodoListsToLists, value: self.nameTodoLists, index: self.nameTodoListsToLists.count - self.index - 1, entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr)
+                    CoreDataManager.sharedManager.updateData(array: &self.nameTodoListsToLists, value: self.nameTodoLists, index: self.nameTodoListsToLists.count - self.index - 1, entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr)
                     self.tableListsView.beginUpdates()
                     self.tableListsView.deleteRows(at: [indexPath], with: .automatic)
                     self.tableListsView.endUpdates()
@@ -210,7 +209,7 @@ extension TodoListsViewController: UITableViewDataSource {
                 
                 if let indexPath = self.tableListsDel.indexPathForRow(at: hitPoint) {
                     self.listsDel.remove(at: indexPath.row)
-                    CoreDataManager.sharedManager.updateDataArray(array: &self.nameTodoListsDelToLists, value: self.listsDel, index: self.nameTodoListsToLists.count - self.index - 1, entityName: KeyLists.share.nameListsDelArr, forKey: KeyLists.share.keyTodoListsDelArr)
+                    CoreDataManager.sharedManager.updateData(array: &self.nameTodoListsDelToLists, value: self.listsDel, index: self.nameTodoListsToLists.count - self.index - 1, entityName: KeyLists.share.nameListsDelArr, forKey: KeyLists.share.keyTodoListsDelArr)
                     self.tableListsDel.beginUpdates()
                     self.tableListsDel.deleteRows(at: [indexPath], with: .automatic)
                     self.tableListsDel.endUpdates()

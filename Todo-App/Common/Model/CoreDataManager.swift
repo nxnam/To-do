@@ -29,7 +29,7 @@ class CoreDataManager {
         }
     }
     
-    func insertDataArray(entityName: String, forKey: String, value: [String]) {
+    func insertData(entityName: String, forKey: String, value: [String]) {
         let AppDel: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         
         let context:NSManagedObjectContext = AppDel.persistentContainer.viewContext
@@ -56,9 +56,9 @@ class CoreDataManager {
             let results = try context.fetch(request)
             
             for data in results as! [NSManagedObject]{
-                if let a = data.value(forKey: "\(forKey)") {
+                if let value = data.value(forKey: "\(forKey)") {
                     
-                    array.insert(a as! String, at: 0)
+                    array.insert(value as! String, at: 0)
                 }
             }
             
@@ -67,7 +67,7 @@ class CoreDataManager {
         }
     }
     
-    func fetchDataArray(array: inout [[String]], entityName: String, forKey: String) {
+    func fetchData(array: inout [[String]], entityName: String, forKey: String) {
         let AppDel: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         
         let context:NSManagedObjectContext = AppDel.persistentContainer.viewContext
@@ -79,9 +79,9 @@ class CoreDataManager {
             let results = try context.fetch(request)
             
             for data in results as! [NSManagedObject]{
-                if let a = data.value(forKey: "\(forKey)") {
+                if let value = data.value(forKey: "\(forKey)") {
                     
-                    array.insert(a as! [String], at: 0)
+                    array.insert(value as! [String], at: 0)
                 }
             }
             
@@ -116,7 +116,7 @@ class CoreDataManager {
         }
     }
     
-    func updateDataArray(array: inout [[String]], value: [String], index: Int, entityName: String, forKey: String) {
+    func updateData(array: inout [[String]], value: [String], index: Int, entityName: String, forKey: String) {
         let AppDel: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         
         let context:NSManagedObjectContext = AppDel.persistentContainer.viewContext
@@ -163,6 +163,5 @@ class CoreDataManager {
         } catch {
             print("Error")
         }
-        
     }
 }

@@ -25,8 +25,7 @@ class ListsViewController: UIViewController {
     var addLists = [String]()
     var todoLists = [[String]]()
     var todoListsDel = [[String]]()
-    
-    
+
     var txtLists = ""
     var todoTitle = ""
     
@@ -54,8 +53,8 @@ class ListsViewController: UIViewController {
         
         //fetchData
         CoreDataManager.sharedManager.fetchData(array: &self.addLists, entityName: KeyLists.share.nameLists, forKey: KeyLists.share.keyLists)
-        CoreDataManager.sharedManager.fetchDataArray(array: &self.todoLists, entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr)
-        CoreDataManager.sharedManager.fetchDataArray(array: &self.todoListsDel, entityName: KeyLists.share.nameListsDelArr, forKey: KeyLists.share.keyTodoListsDelArr)
+        CoreDataManager.sharedManager.fetchData(array: &self.todoLists, entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr)
+        CoreDataManager.sharedManager.fetchData(array: &self.todoListsDel, entityName: KeyLists.share.nameListsDelArr, forKey: KeyLists.share.keyTodoListsDelArr)
         
         customNavigationBar()
         getUserName()
@@ -116,15 +115,15 @@ class ListsViewController: UIViewController {
                 self.todoLists.append([])
                 self.todoListsDel.append([])
                 CoreDataManager.sharedManager.insertData(entityName: KeyLists.share.nameLists, forKey: KeyLists.share.keyLists, value: self.txtLists)
-                CoreDataManager.sharedManager.insertDataArray(entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr, value: [])
-                CoreDataManager.sharedManager.insertDataArray(entityName: KeyLists.share.nameListsDelArr, forKey: KeyLists.share.keyTodoListsDelArr, value: [])
+                CoreDataManager.sharedManager.insertData(entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr, value: [])
+                CoreDataManager.sharedManager.insertData(entityName: KeyLists.share.nameListsDelArr, forKey: KeyLists.share.keyTodoListsDelArr, value: [])
             }
             self.addLists.removeAll()
             self.todoLists.removeAll()
             self.todoListsDel.removeAll()
             CoreDataManager.sharedManager.fetchData(array: &self.addLists, entityName: KeyLists.share.nameLists, forKey: KeyLists.share.keyLists)
-            CoreDataManager.sharedManager.fetchDataArray(array: &self.todoLists, entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr)
-            CoreDataManager.sharedManager.fetchDataArray(array: &self.todoListsDel, entityName: KeyLists.share.nameListsDelArr, forKey: KeyLists.share.keyTodoListsDelArr)
+            CoreDataManager.sharedManager.fetchData(array: &self.todoLists, entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr)
+            CoreDataManager.sharedManager.fetchData(array: &self.todoListsDel, entityName: KeyLists.share.nameListsDelArr, forKey: KeyLists.share.keyTodoListsDelArr)
             DispatchQueue.main.async {
                 self.ListTableView.reloadData()
             }

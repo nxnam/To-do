@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ng-Gf-9Tw">
-                                <rect key="frame" x="0.0" y="88" width="414" height="155"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="163.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All to-do's" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lik-r6-RHK">
-                                        <rect key="frame" x="10" y="57.5" width="148.5" height="39.5"/>
+                                        <rect key="frame" x="10" y="62" width="148.5" height="39.5"/>
                                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="34"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -33,7 +33,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MmS-aZ-T4U">
-                                <rect key="frame" x="10" y="243" width="394" height="619"/>
+                                <rect key="frame" x="10" y="207.5" width="394" height="654.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ALLTODOCELL" rowHeight="79" id="ktF-IR-L19" customClass="AllTodoListsTableViewCell" customModule="Todo_App" customModuleProvider="target">
@@ -94,24 +94,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rmq-4q-aCM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="934.78260869565224" y="106.47321428571428"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ID8-15-pK3">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="a1S-tc-lXc" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cFu-2h-cXn">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="kHK-pE-MlH" kind="relationship" relationship="rootViewController" id="U0R-rK-8Ed"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="upt-Vq-w2v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="24.637681159420293" y="106.47321428571428"/>
         </scene>
     </scenes>
 </document>
