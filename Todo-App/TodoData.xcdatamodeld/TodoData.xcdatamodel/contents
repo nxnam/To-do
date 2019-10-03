@@ -6,6 +6,9 @@
     <entity name="ListsArr" representedClassName="ListsArr" syncable="YES" codeGenerationType="class">
         <attribute name="todoListsArr" optional="YES" attributeType="Transformable" customClassName="[String]"/>
     </entity>
+    <entity name="ListsDelArr" representedClassName="ListsDelArr" syncable="YES" codeGenerationType="class">
+        <attribute name="todoListsDelArr" optional="YES" attributeType="Transformable" customClassName="[String]"/>
+    </entity>
     <entity name="TodoLists" representedClassName="TodoLists" syncable="YES" codeGenerationType="class">
         <attribute name="lblTodoLists" optional="YES" attributeType="String"/>
     </entity>
@@ -14,8 +17,9 @@
     </entity>
     <elements>
         <element name="Lists" positionX="-36" positionY="18" width="128" height="58"/>
+        <element name="ListsArr" positionX="-45" positionY="9" width="128" height="58"/>
         <element name="TodoLists" positionX="-63" positionY="-18" width="128" height="60"/>
         <element name="TodoListsDel" positionX="-54" positionY="0" width="128" height="60"/>
-        <element name="ListsArr" positionX="-45" positionY="9" width="128" height="58"/>
+        <element name="ListsDelArr" positionX="-45" positionY="9" width="128" height="58"/>
     </elements>
 </model>
