@@ -11,6 +11,9 @@ target 'Todo-App' do
 	pod 'Firebase/Auth'
 	pod 'Firebase/Storage'
 
-  	pod 'SVProgressHUD'
+  pod 'Fabric'
+  pod 'Crashlytics'
+  
+  pod 'SVProgressHUD'
 
 end

@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import CoreData
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
   class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +24,8 @@ import CoreData
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         
         FirebaseApp.configure()
+        
+        Fabric.with([Crashlytics.self])
         
         return true
     }

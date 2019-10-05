@@ -127,6 +127,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lk0-B5-1hx">
                                                     <rect key="frame" x="10" y="41" width="24" height="24"/>
                                                     <state key="normal" image="success"/>
+                                                    <state key="selected" image="success2"/>
                                                 </button>
                                             </subviews>
                                             <constraints>

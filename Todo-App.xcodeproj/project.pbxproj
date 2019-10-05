@@ -330,6 +330,7 @@
 				FB0C43AB232B4CDE00C07FAD /* Frameworks */,
 				FB0C43AC232B4CDE00C07FAD /* Resources */,
 				904D2E7AA109B46662FB1124 /* [CP] Embed Pods Frameworks */,
+				FB08F98A2348C5EA00485C2C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -434,6 +435,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Todo-App/Pods-Todo-App-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		FB08F98A2348C5EA00485C2C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run f6cdd5123dfa1bdd98a91b19fd2ee73d90451de2 81efc3783e3860c06c9f44a424699f3ce84c33cd8db9bb465bf3542dc84cbe2a\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -600,6 +618,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Todo-App/Todo-App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 87Z3WQ446P;
 				INFOPLIST_FILE = "Todo-App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

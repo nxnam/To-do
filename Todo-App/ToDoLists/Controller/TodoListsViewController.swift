@@ -162,6 +162,8 @@ extension TodoListsViewController: UITableViewDataSource {
             
             cell.btnDel.addTarget(self, action: #selector(delCell(_:)), for: .touchUpInside)
             
+            cell.btnSuccess.addTarget(self, action: #selector(checkMark(_:)), for: .touchUpInside)
+            
             return cell
             
         } else if tableView == self.tableListsDel,
@@ -227,6 +229,14 @@ extension TodoListsViewController: UITableViewDataSource {
             alert.addAction(btn_Action)
             
             self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    @objc func checkMark(_ sender: UIButton) {
+        if sender.isSelected {
+            sender.isSelected = false
+        } else {
+            sender.isSelected = true
         }
     }
 }
