@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 class ViewController: UIViewController {
     
@@ -17,6 +18,10 @@ class ViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + delayInSeconds) {
             self.logIn()
         }
+        
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+        AnalyticsParameterItemID: "my_item_id"
+        ])
         
         setupBackground()
     }

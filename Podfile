@@ -10,6 +10,7 @@ target 'Todo-App' do
 	pod 'Firebase/Database'
 	pod 'Firebase/Auth'
 	pod 'Firebase/Storage'
+  pod 'FirebaseAnalytics'
 
   pod 'Fabric'
   pod 'Crashlytics'
