@@ -21,6 +21,7 @@ class TodoListsViewController: UIViewController {
     
     @IBOutlet weak var lblTitle: UILabel!
     
+    
     var txtTodoLists = ""
     var nameTodoListsToLists = [[String]]()
     var nameTodoListsDelToLists = [[String]]()
@@ -71,8 +72,11 @@ class TodoListsViewController: UIViewController {
         return .lightContent
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     func customNavigationBar() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .done, target: self, action: nil)
         navigationController?.navigationBar.backgroundColor = .none
         navigationController?.navigationBar.tintColor = .white
     }
@@ -123,7 +127,10 @@ extension TodoListsViewController: UITableViewDelegate {
                         self.tableListsView.reloadData()
                     }
                 }
-                let btn_Cancel = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel)
+                let btn_Cancel = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) { (btn_Cancel) in
+                    self.tableListsView.deselectRow(at: indexPath, animated: true)
+                }
+                
                 alert.addTextField { (txtList) in
                 }
                 alert.addAction(btn_Cancel)

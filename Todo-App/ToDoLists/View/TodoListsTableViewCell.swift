@@ -14,8 +14,8 @@ class TodoListsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var btnDel: UIButton!
     
-    @IBAction func btn_Del(_ sender: Any) {
-    }
+    @IBOutlet weak var btnSuccess: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

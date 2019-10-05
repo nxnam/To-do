@@ -121,7 +121,6 @@
 			children = (
 				FB0F0B682333B408001B1A1D /* Todo-App.entitlements */,
 				FBC53BB62331DAD1009E8647 /* Common */,
-				FB0C43B1232B4CDE00C07FAD /* AppDelegate.swift */,
 				FB210F232346447D007D41B6 /* AllTodoLists */,
 				FB0C43DC232D1DC600C07FAD /* ToDoLists */,
 				FB0C43CE232C844400C07FAD /* Lists */,
@@ -314,6 +313,7 @@
 				FB24BE3F2331DEAD00CDFBC6 /* View */,
 				FB24BE3E2331DEA200CDFBC6 /* Model */,
 				FB0C43CB232B539600C07FAD /* Extension+UIView */,
+				FB0C43B1232B4CDE00C07FAD /* AppDelegate.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
