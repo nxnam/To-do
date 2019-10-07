@@ -63,7 +63,6 @@ class TodoListsViewController: UIViewController {
                 listsDel.insert(nameTodoLists[index], at: 0)
                 nameTodoLists.remove(at: index)
                 checkMark.remove(at: index)
-                print("111 + \(index)")
             }
         }
         
@@ -84,11 +83,8 @@ class TodoListsViewController: UIViewController {
                 listsDel.insert(nameTodoLists[index], at: 0)
                 nameTodoLists.remove(at: index)
                 checkMark.remove(at: index)
-                print("111 + \(index)")
             }
         }
-        
-        print("333 + \(nameTodoLists)")
         
         CoreDataManager.sharedManager.updateData(array: &nameTodoListsToLists, value: nameTodoLists, index: nameTodoListsDelToLists.count - index - 1, entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr)
         CoreDataManager.sharedManager.updateData(array: &nameTodoListsDelToLists, value: listsDel, index: nameTodoListsDelToLists.count - index - 1, entityName: KeyLists.share.nameListsDelArr, forKey: KeyLists.share.keyTodoListsDelArr)
