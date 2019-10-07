@@ -67,6 +67,10 @@ class TodoListsViewController: UIViewController {
             }
         }
         
+        CoreDataManager.sharedManager.updateData(array: &nameTodoListsToLists, value: nameTodoLists, index: nameTodoListsDelToLists.count - index - 1, entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr)
+        CoreDataManager.sharedManager.updateData(array: &nameTodoListsDelToLists, value: listsDel, index: nameTodoListsDelToLists.count - index - 1, entityName: KeyLists.share.nameListsDelArr, forKey: KeyLists.share.keyTodoListsDelArr)
+        CoreDataManager.sharedManager.updateData(array: &checkMarkToLists, value: checkMark, index: nameTodoListsDelToLists.count - index - 1, entityName: KeyLists.share.nameCheckArr, forKey: KeyLists.share.keyCheckArr)
+        
         lblTitle.text = todoListsTitle
         
         customNavigationBar()
