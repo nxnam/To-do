@@ -129,6 +129,8 @@ class TodoListsViewController: UIViewController {
                 self.checkMark.insert(false, at: 0)
                 CoreDataManager.sharedManager.updateData(array: &nameTodoListsToLists, value: nameTodoLists, index: nameTodoListsToLists.count - index - 1, entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr)
                 CoreDataManager.sharedManager.updateData(array: &checkMarkToLists, value: checkMark, index: nameTodoListsDelToLists.count - index - 1, entityName: KeyLists.share.nameCheckArr, forKey: KeyLists.share.keyCheckArr)
+            } else {
+                self.present(Alert.shareAlert.showAlert(title: "Thông báo", message: "Nội dung không được để trống", title_button: "Ok"), animated: true)
             }
         }
         txtActivity.text = ""
