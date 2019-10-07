@@ -25,9 +25,11 @@ class TodoListsViewController: UIViewController {
     var txtTodoLists = ""
     var nameTodoListsToLists = [[String]]()
     var nameTodoListsDelToLists = [[String]]()
+    var checkMarkToLists = [[Bool]]()
     var nameTodoLists = [String]()
     var listsDel = [String]()
     var todoListsTitle = ""
+    var checkMark = [Bool]()
     
     var index: Int = 0
     
@@ -42,6 +44,7 @@ class TodoListsViewController: UIViewController {
         //fetchData()
         CoreDataManager.sharedManager.fetchData(array: &self.nameTodoListsToLists, entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr)
         CoreDataManager.sharedManager.fetchData(array: &self.nameTodoListsDelToLists, entityName: KeyLists.share.nameListsDelArr, forKey: KeyLists.share.keyTodoListsDelArr)
+        CoreDataManager.sharedManager.fetchData(array: &self.checkMarkToLists, entityName: KeyLists.share.nameCheckArr, forKey: KeyLists.share.keyCheckArr)
         
         //setupView
         setupListsView()
@@ -53,6 +56,16 @@ class TodoListsViewController: UIViewController {
         
         nameTodoLists = nameTodoListsToLists[index]
         listsDel = nameTodoListsDelToLists[index]
+        checkMark = checkMarkToLists[index]
+        
+        for (index,value) in checkMark.enumerated() {
+            if value == true {
+                listsDel.insert(nameTodoLists[index], at: 0)
+                nameTodoLists.remove(at: index)
+                checkMark.remove(at: index)
+                print("111 + \(index)")
+            }
+        }
         
         lblTitle.text = todoListsTitle
         
@@ -62,8 +75,20 @@ class TodoListsViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        for (index,value) in checkMark.enumerated() {
+            if value == true {
+                listsDel.insert(nameTodoLists[index], at: 0)
+                nameTodoLists.remove(at: index)
+                checkMark.remove(at: index)
+                print("111 + \(index)")
+            }
+        }
+        
+        print("333 + \(nameTodoLists)")
+        
         CoreDataManager.sharedManager.updateData(array: &nameTodoListsToLists, value: nameTodoLists, index: nameTodoListsDelToLists.count - index - 1, entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr)
         CoreDataManager.sharedManager.updateData(array: &nameTodoListsDelToLists, value: listsDel, index: nameTodoListsDelToLists.count - index - 1, entityName: KeyLists.share.nameListsDelArr, forKey: KeyLists.share.keyTodoListsDelArr)
+        CoreDataManager.sharedManager.updateData(array: &checkMarkToLists, value: checkMark, index: nameTodoListsDelToLists.count - index - 1, entityName: KeyLists.share.nameCheckArr, forKey: KeyLists.share.keyCheckArr)
         
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
@@ -101,7 +126,9 @@ class TodoListsViewController: UIViewController {
         if let txtActivity = txtActivity.text {
             if txtActivity.count > 0 {
                 self.nameTodoLists.insert(txtActivity, at: 0)
+                self.checkMark.insert(false, at: 0)
                 CoreDataManager.sharedManager.updateData(array: &nameTodoListsToLists, value: nameTodoLists, index: nameTodoListsToLists.count - index - 1, entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr)
+                CoreDataManager.sharedManager.updateData(array: &checkMarkToLists, value: checkMark, index: nameTodoListsDelToLists.count - index - 1, entityName: KeyLists.share.nameCheckArr, forKey: KeyLists.share.keyCheckArr)
             }
         }
         txtActivity.text = ""
@@ -162,7 +189,7 @@ extension TodoListsViewController: UITableViewDataSource {
             
             cell.btnDel.addTarget(self, action: #selector(delCell(_:)), for: .touchUpInside)
             
-            cell.btnSuccess.addTarget(self, action: #selector(checkMark(_:)), for: .touchUpInside)
+            cell.btnSuccess.addTarget(self, action: #selector(check(_:)), for: .touchUpInside)
             
             return cell
             
@@ -191,13 +218,14 @@ extension TodoListsViewController: UITableViewDataSource {
                 if let indexPath = self.tableListsView.indexPathForRow(at: hitPoint) {
                     self.listsDel.insert(self.nameTodoLists[indexPath.row], at: 0)
                     CoreDataManager.sharedManager.updateData(array: &self.nameTodoListsDelToLists, value: self.listsDel, index: self.nameTodoListsToLists.count - self.index - 1, entityName: KeyLists.share.nameListsDelArr, forKey: KeyLists.share.keyTodoListsDelArr)
-                    
                     DispatchQueue.main.async {
                         self.tableListsDel.reloadData()
                     }
                     
                     self.nameTodoLists.remove(at: indexPath.row)
+                    self.checkMark.remove(at: indexPath.row)
                     CoreDataManager.sharedManager.updateData(array: &self.nameTodoListsToLists, value: self.nameTodoLists, index: self.nameTodoListsToLists.count - self.index - 1, entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr)
+                    CoreDataManager.sharedManager.updateData(array: &self.checkMarkToLists, value: self.checkMark, index: self.nameTodoListsToLists.count - self.index - 1, entityName: KeyLists.share.nameCheckArr, forKey: KeyLists.share.keyCheckArr)
                     self.tableListsView.beginUpdates()
                     self.tableListsView.deleteRows(at: [indexPath], with: .automatic)
                     self.tableListsView.endUpdates()
@@ -232,11 +260,18 @@ extension TodoListsViewController: UITableViewDataSource {
         }
     }
     
-    @objc func checkMark(_ sender: UIButton) {
-        if sender.isSelected {
-            sender.isSelected = false
-        } else {
-            sender.isSelected = true
+    @objc func check(_ sender: UIButton) {
+        let hitPoint = sender.convert(CGPoint.zero, to: self.tableListsView)
+        if let indexPath = self.tableListsView.indexPathForRow(at: hitPoint) {
+            
+            if sender.isSelected {
+                sender.isSelected = false
+                checkMark[indexPath.row] = false
+            } else {
+                sender.isSelected = true
+                checkMark[indexPath.row] = true
+            }
         }
+        CoreDataManager.sharedManager.updateData(array: &checkMarkToLists, value: checkMark, index: nameTodoListsDelToLists.count - index - 1, entityName: KeyLists.share.nameCheckArr, forKey: KeyLists.share.keyCheckArr)
     }
 }

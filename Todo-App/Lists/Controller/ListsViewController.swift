@@ -25,6 +25,7 @@ class ListsViewController: UIViewController {
     var addLists = [String]()
     var todoLists = [[String]]()
     var todoListsDel = [[String]]()
+    var todoCheck = [[Bool]]()
 
     var txtLists = ""
     var todoTitle = ""
@@ -55,6 +56,7 @@ class ListsViewController: UIViewController {
         CoreDataManager.sharedManager.fetchData(array: &self.addLists, entityName: KeyLists.share.nameLists, forKey: KeyLists.share.keyLists)
         CoreDataManager.sharedManager.fetchData(array: &self.todoLists, entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr)
         CoreDataManager.sharedManager.fetchData(array: &self.todoListsDel, entityName: KeyLists.share.nameListsDelArr, forKey: KeyLists.share.keyTodoListsDelArr)
+        CoreDataManager.sharedManager.fetchData(array: &self.todoCheck, entityName: KeyLists.share.nameCheckArr, forKey: KeyLists.share.keyCheckArr)
         
         customNavigationBar()
         getUserName()
@@ -67,6 +69,7 @@ class ListsViewController: UIViewController {
         addLists.removeAll()
         todoLists.removeAll()
         todoListsDel.removeAll()
+        todoCheck.removeAll()
         
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
@@ -114,16 +117,20 @@ class ListsViewController: UIViewController {
                 self.addLists.append(self.txtLists)
                 self.todoLists.append([])
                 self.todoListsDel.append([])
+                self.todoCheck.append([])
                 CoreDataManager.sharedManager.insertData(entityName: KeyLists.share.nameLists, forKey: KeyLists.share.keyLists, value: self.txtLists)
                 CoreDataManager.sharedManager.insertData(entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr, value: [])
                 CoreDataManager.sharedManager.insertData(entityName: KeyLists.share.nameListsDelArr, forKey: KeyLists.share.keyTodoListsDelArr, value: [])
+                CoreDataManager.sharedManager.insertData(entityName: KeyLists.share.nameCheckArr, forKey: KeyLists.share.keyCheckArr, value: [])
             }
             self.addLists.removeAll()
             self.todoLists.removeAll()
             self.todoListsDel.removeAll()
+            self.todoCheck.removeAll()
             CoreDataManager.sharedManager.fetchData(array: &self.addLists, entityName: KeyLists.share.nameLists, forKey: KeyLists.share.keyLists)
             CoreDataManager.sharedManager.fetchData(array: &self.todoLists, entityName: KeyLists.share.nameListsArr, forKey: KeyLists.share.keyTodoListsArr)
             CoreDataManager.sharedManager.fetchData(array: &self.todoListsDel, entityName: KeyLists.share.nameListsDelArr, forKey: KeyLists.share.keyTodoListsDelArr)
+            CoreDataManager.sharedManager.fetchData(array: &self.todoCheck, entityName: KeyLists.share.nameCheckArr, forKey: KeyLists.share.keyCheckArr)
             DispatchQueue.main.async {
                 self.ListTableView.reloadData()
             }
@@ -158,6 +165,7 @@ extension ListsViewController: UITableViewDelegate {
             Todo.todoListsTitle = addLists[indexPath.row]
             Todo.nameTodoLists = todoLists[indexPath.row]
             Todo.listsDel = todoListsDel[indexPath.row]
+            Todo.checkMark = todoCheck[indexPath.row]
             Todo.index = indexPath.row
             
             navigationController?.pushViewController(Todo, animated: true)
@@ -209,9 +217,11 @@ extension ListsViewController: UITableViewDataSource {
                 if let indexPath = self.ListTableView.indexPathForRow(at: hitPoint) {
                     self.addLists.remove(at: indexPath.row)
                     self.todoLists.remove(at: indexPath.row)
+                    self.todoCheck.remove(at: indexPath.row)
                     CoreDataManager.sharedManager.deleteData(entityName: KeyLists.share.nameLists, index: self.addLists.count - indexPath.row)
                     CoreDataManager.sharedManager.deleteData(entityName: KeyLists.share.nameListsArr, index: self.addLists.count - indexPath.row)
                     CoreDataManager.sharedManager.deleteData(entityName: KeyLists.share.nameListsDelArr, index: self.addLists.count - indexPath.row)
+                    CoreDataManager.sharedManager.deleteData(entityName: KeyLists.share.nameCheckArr, index: self.addLists.count - indexPath.row)
                     
                     self.ListTableView.beginUpdates()
                     self.ListTableView.deleteRows(at: [indexPath], with: .automatic)

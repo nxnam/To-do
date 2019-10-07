@@ -19,9 +19,9 @@ class ViewController: UIViewController {
             self.logIn()
         }
         
-        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-        AnalyticsParameterItemID: "my_item_id"
-        ])
+//        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+//        AnalyticsParameterItemID: "my_item_id"
+//        ])
         
         setupBackground()
     }

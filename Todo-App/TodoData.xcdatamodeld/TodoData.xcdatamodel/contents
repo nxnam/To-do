@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="18G103" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Check" representedClassName="Check" syncable="YES" codeGenerationType="class">
+        <attribute name="checkMark" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="CheckArr" representedClassName="CheckArr" syncable="YES" codeGenerationType="class">
+        <attribute name="checkMarkArr" optional="YES" attributeType="Transformable" customClassName="[Bool]"/>
+    </entity>
     <entity name="Lists" representedClassName="Lists" syncable="YES" codeGenerationType="class">
         <attribute name="lblLists" optional="YES" attributeType="String"/>
     </entity>
@@ -18,8 +24,10 @@
     <elements>
         <element name="Lists" positionX="-36" positionY="18" width="128" height="58"/>
         <element name="ListsArr" positionX="-45" positionY="9" width="128" height="58"/>
+        <element name="ListsDelArr" positionX="-45" positionY="9" width="128" height="58"/>
         <element name="TodoLists" positionX="-63" positionY="-18" width="128" height="60"/>
         <element name="TodoListsDel" positionX="-54" positionY="0" width="128" height="60"/>
-        <element name="ListsDelArr" positionX="-45" positionY="9" width="128" height="58"/>
+        <element name="Check" positionX="-45" positionY="9" width="128" height="58"/>
+        <element name="CheckArr" positionX="-36" positionY="18" width="128" height="58"/>
     </elements>
 </model>

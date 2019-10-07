@@ -25,7 +25,7 @@ import Crashlytics
         
         FirebaseApp.configure()
         
-        Fabric.with([Crashlytics.self])
+//        Fabric.with([Crashlytics.self])
         
         return true
     }

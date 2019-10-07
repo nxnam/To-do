@@ -15,7 +15,11 @@ class KeyLists {
     let nameLists = "Lists"
     let nameListsArr = "ListsArr"
     let nameListsDelArr = "ListsDelArr"
+    let nameCheck = "Check"
+    let nameCheckArr = "CheckArr"
     let keyLists = "lblLists"
     let keyTodoListsArr = "todoListsArr"
     let keyTodoListsDelArr = "todoListsDelArr"
+    let keyCheck = "checkMark"
+    let keyCheckArr = "checkMarkArr"
 }
